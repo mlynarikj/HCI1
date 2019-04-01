@@ -7,11 +7,15 @@
 package clinic;
 
 import DBAccess.ClinicDBAccess;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -56,7 +60,18 @@ public class AddPersonController implements Initializable {
     }    
 
     @FXML
-    private void addPhoto(MouseEvent event) {
+    private void addPhoto(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("photos.fxml"));
+        Parent root = loader.load();
+        
+        AddPhotoController addPhoto = loader.<AddPhotoController>.getController();
+        
+        addPhoto.initStage(image, primaryStage);
+        Scene scene = new Scene(root);
+        
+        primaryStage.setTitle("Add Photo");
+        primaryStage.setScene(scene);
+        primaryStage.show();
         
     }
     
@@ -64,8 +79,9 @@ public class AddPersonController implements Initializable {
     private void save(MouseEvent event)
     {
         Patient patient = new Patient(dni.getText(), name.getText(), surname.getText(), telephone.getText(), image.getImage());
-        ClinicDBAccess clinic = new ClinicDBAccess();
+        ClinicDBAccess clinic = ClinicDBAccess.getSingletonClinicDBAccess();
         clinic.getPatients().add(patient);
+        clinic.saveDB();
     }
     
     @FXML
