@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="clinic.AddPersonController">
   <children>
     <BorderPane layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0">
       <bottom>
         <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="600.0" spacing="20.0">
           <children>
-            <Button mnemonicParsing="false" prefWidth="70.0" text="Save" />
-            <Button alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" text="Cancel" />
+            <Button fx:id="save" mnemonicParsing="false" onMouseClicked="#save" prefWidth="70.0" text="Save" />
+            <Button fx:id="cancel" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onMouseClicked="#cancel" text="Cancel" />
           </children>
           <padding>
             <Insets right="20.0" />
@@ -55,9 +55,9 @@
       <right>
         <VBox alignment="CENTER" prefHeight="220.0" prefWidth="144.0">
           <children>
-            <ImageView fitHeight="80.0" fitWidth="77.25714401971726" onMouseClicked="#addPhoto" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="photo" fitHeight="80.0" fitWidth="77.25714401971726" onMouseClicked="#addPhoto" pickOnBounds="true" preserveRatio="true">
               <image>
-                <Image url="@../../../../../../../Bilder/HCI/+.png" backgroundLoading="true" />
+                <Image url="@../../../../../../../Bilder/HCI/+.png" backgroundLoading="false" />
               </image>
             </ImageView>
             <Label text="Add photo">
