@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?scenebuilder-classpath-element ../../resources?>
+
+<AnchorPane prefHeight="565.0" prefWidth="719.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="clinic.AddDoctor">
+  <children>
+    <BorderPane layoutX="0.0" layoutY="0.0" prefHeight="565.0" prefWidth="719.0">
+      <bottom>
+        <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="600.0" spacing="20.0">
+          <children>
+            <Button mnemonicParsing="false" onMouseClicked="#save" prefWidth="70.0" text="Save" />
+            <Button alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onMouseClicked="#cancel" text="Cancel" />
+          </children>
+          <padding>
+            <Insets right="20.0" />
+          </padding>
+        </HBox>
+      </bottom>
+      <center>
+        <VBox id="VBox" alignment="TOP_LEFT" prefHeight="369.0" spacing="20.0">
+          <children>
+            <TextField fx:id="dni" prefWidth="200.0" />
+            <TextField fx:id="name" prefWidth="200.0" />
+            <TextField fx:id="surname" prefWidth="200.0" />
+            <TextField fx:id="telephone" prefWidth="200.0" />
+            <ChoiceBox fx:id="room" prefWidth="365.0">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Item 1" />
+                  <String fx:value="Item 2" />
+                  <String fx:value="Item 3" />
+                </FXCollections>
+              </items>
+            </ChoiceBox>
+            <HBox prefHeight="24.0" prefWidth="365.0" spacing="10.0">
+              <children>
+                <TextField fx:id="from" prefWidth="200.0" promptText="From" />
+                <TextField fx:id="to" prefWidth="200.0" promptText="To" />
+              </children>
+            </HBox>
+            <Pane prefHeight="119.0" prefWidth="256.0" style="-fx-border-width: 1;&#10;-fx-border-color: gray;&#10;-fx-border-radius: 5;&#10;">
+              <children>
+                <CheckBox fx:id="monday" layoutX="3.0" layoutY="4.0" mnemonicParsing="false" text="Monday" />
+                <CheckBox fx:id="tuesday" layoutX="3.0" layoutY="32.0" mnemonicParsing="false" text="Tuesday" />
+                <CheckBox fx:id="wednesday" layoutX="3.0" layoutY="60.0" mnemonicParsing="false" text="Wednesday" />
+                <CheckBox fx:id="thursday" layoutX="3.0" layoutY="88.0" mnemonicParsing="false" text="Thursday" />
+                <CheckBox fx:id="friday" layoutX="193.0" layoutY="4.0" mnemonicParsing="false" text="Friday" />
+                <CheckBox fx:id="saturday" layoutX="193.0" layoutY="32.0" mnemonicParsing="false" text="Saturday" />
+                <CheckBox fx:id="sunday" layoutX="193.0" layoutY="60.0" mnemonicParsing="false" text="Sunday" />
+              </children>
+            </Pane>
+          </children>
+          <padding>
+            <Insets left="10.0" />
+          </padding>
+          <BorderPane.margin>
+            <Insets fx:id="x2" />
+          </BorderPane.margin>
+        </VBox>
+      </center>
+      <left>
+        <VBox spacing="20.0">
+          <children>
+            <Label alignment="CENTER_RIGHT" text="DNI" VBox.margin="$x2">
+              <font>
+                <Font name="System Bold Italic" size="18.0" fx:id="x1" />
+              </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" font="$x1" text="Name" VBox.margin="$x2" />
+            <Label alignment="CENTER_RIGHT" font="$x1" text="Surname" VBox.margin="$x2" />
+            <Label alignment="CENTER_RIGHT" font="$x1" text="Telephone" VBox.margin="$x2" />
+            <Label alignment="CENTER_RIGHT" font="$x1" text="Examination room" VBox.margin="$x2" />
+            <Pane prefHeight="200.0" prefWidth="200.0">
+              <children>
+                <Label alignment="CENTER_RIGHT" font="$x1" layoutX="0.0" layoutY="3.0" text="Working hours" />
+                <Label alignment="CENTER_RIGHT" font="$x1" layoutX="0.0" layoutY="45.0" text="Working days" />
+              </children>
+            </Pane>
+          </children>
+          <BorderPane.margin>
+            <Insets left="20.0" />
+          </BorderPane.margin>
+        </VBox>
+      </left>
+      <right>
+        <VBox alignment="CENTER" prefHeight="220.0" prefWidth="144.0">
+          <children>
+            <ImageView fitHeight="80.0" fitWidth="77.25714401971726" onMouseClicked="#addPhoto" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@../../resources/plus.png" />
+              </image>
+            </ImageView>
+            <Label text="Add photo">
+              <font>
+                <Font name="System Bold" size="15.0" />
+              </font>
+            </Label>
+          </children>
+        </VBox>
+      </right>
+      <top>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+          <children>
+            <Label contentDisplay="LEFT" text="Doctor Form" textFill="BLACK" textOverrun="CENTER_ELLIPSIS">
+              <font>
+                <Font name="System Bold" size="22.0" />
+              </font>
+              <HBox.margin>
+                <Insets fx:id="x2" />
+              </HBox.margin>
+            </Label>
+          </children>
+        </HBox>
+      </top>
+    </BorderPane>
+  </children>
+</AnchorPane>
