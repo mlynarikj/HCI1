@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import model.Patient;
 
 /**
@@ -50,6 +51,10 @@ public class AddPersonController implements Initializable {
     private Button cancel;
     @FXML
     private ImageView image;
+    
+    private Stage stage;
+    private String title;
+    private Scene scene;
 
     /**
      * Initializes the controller class.
@@ -58,6 +63,14 @@ public class AddPersonController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
     }    
+    
+    public void initStage(Stage stage)
+    {
+        this.stage = stage;
+        title = stage.getTitle();
+        scene = stage.getScene();
+        
+    }
 
     @FXML
     private void addPhoto(MouseEvent event) throws IOException {
@@ -66,12 +79,12 @@ public class AddPersonController implements Initializable {
         
         AddPhotoController addPhoto = loader.<AddPhotoController>.getController();
         
-        addPhoto.initStage(image, primaryStage);
+        addPhoto.initStage(image, stage);
         Scene scene = new Scene(root);
         
-        primaryStage.setTitle("Add Photo");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        stage.setTitle("Add Photo");
+        stage.setScene(scene);
+        stage.show();
         
     }
     
@@ -87,6 +100,8 @@ public class AddPersonController implements Initializable {
     @FXML
     private void cancel(MouseEvent event)
     {
-        
+        stage.setTitle(title);
+        stage.setScene(scene);
+        stage.show();
     }
 }
