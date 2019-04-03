@@ -6,6 +6,7 @@
 
 package clinic;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,7 +24,7 @@ import javafx.stage.Stage;
 public class Clinic extends Application {
     
    @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainWindow.fxml"));
         
@@ -34,7 +35,7 @@ public class Clinic extends Application {
         main.initStage(primaryStage);
         
         Scene scene = new Scene(root);
-        
+        //Application.setUserAgentStylesheet(Application.CASPIAN);
         primaryStage.setTitle("Main Window");
         primaryStage.setScene(scene);
         primaryStage.show();
