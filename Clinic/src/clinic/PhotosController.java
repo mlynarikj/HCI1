@@ -6,6 +6,7 @@
 
 package clinic;
 
+import java.beans.EventHandler;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableCell;
@@ -21,6 +23,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageInputStream;
 
@@ -38,7 +43,13 @@ public class PhotosController implements Initializable  {
     @FXML
     private RadioButton female;
 
+    private Stage stage;
+
     private ObservableList<Image> photos = null;
+
+    private ImageView image;
+    private Scene scene;
+    private String title;
     /**
      * Initializes the controller class.
      */
@@ -52,7 +63,7 @@ public class PhotosController implements Initializable  {
         if(male.isSelected())
         {        
        // File dir = new File("C:\\Users\\olemf\\OneDrive\\Dokumenter\\Utveksling\\Informaticas\\New Folder\\HCI1\\Clinic");
-            File dir = new File("clinic//..//..//resources//male");
+            File dir = new File("file:///C://Users//olemf//OneDrive//Dokumenter//Utveksling//Informaticas//New Folder//HCI1//Clinic//resources//male");
             for(final File image : dir.listFiles())
         {
             photos.add(new Image(image.getPath()));
@@ -61,13 +72,36 @@ public class PhotosController implements Initializable  {
         }
         else
         {
-            File dir = new File("clinic//..//..//resources//female");
+            File dir = new File("file:///C://Users//olemf//OneDrive//Dokumenter//Utveksling//Informaticas//New Folder//HCI1//Clinic//resources//female");
             for(final File image : dir.listFiles())
             {
                     photos.add(new Image(image.getPath()));
             }
         }
         
-    }    
-    
+    }
+
+    public void initStage(Stage stage, ImageView image) {
+        this.stage = stage;
+        this.image = image;
+        scene = stage.getScene();
+        title = stage.getTitle();
+    }
+
+    public void save(MouseEvent mouseEvent)
+    {
+        image.setImage(list.getSelectionModel().getSelectedItem());
+        stage.setTitle(title);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+    public void cancel(MouseEvent mouseEvent) {
+        stage.setTitle(title);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
 }

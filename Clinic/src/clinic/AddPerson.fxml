@@ -57,7 +57,7 @@
           <children>
             <ImageView fx:id="photo" fitHeight="80.0" fitWidth="77.25714401971726" onMouseClicked="#addPhoto" pickOnBounds="true" preserveRatio="true">
               <image>
-                <Image url="@../../../../../../../Bilder/HCI/+.png" backgroundLoading="false" />
+                <Image url="@../../resources/plus.png" backgroundLoading="true" />
               </image>
             </ImageView>
             <Label text="Add photo">

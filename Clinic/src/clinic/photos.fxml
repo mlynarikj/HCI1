@@ -2,20 +2,56 @@
 
 <?import java.lang.*?>
 <?import java.util.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="clinic.PhotosController">
-  <children>
-    <RadioButton fx:id="male" layoutX="292.0" layoutY="35.0" mnemonicParsing="false" text="Male" />
-    <RadioButton fx:id="female" layoutX="383.0" layoutY="35.0" mnemonicParsing="false" text="Female" />
-    <Label layoutX="93.0" layoutY="33.0" text="Choose Picture">
-      <font>
-        <Font name="System Bold" size="18.0" />
-      </font>
-    </Label>
-    <ListView fx:id="list" prefHeight="200.0" prefWidth="501.0" AnchorPane.bottomAnchor="108.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="92.0" />
-  </children>
-</AnchorPane>
+<BorderPane prefHeight="329.0" prefWidth="443.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="clinic.PhotosController">
+  <bottom>
+    <HBox alignment="CENTER_RIGHT" padding="$x1" prefHeight="78.0" prefWidth="443.0">
+      <children>
+        <Button fx:id="save" mnemonicParsing="false" onMouseClicked="#save" text="Save">
+          <HBox.margin>
+            <Insets right="20.0" fx:id="x1" />
+          </HBox.margin>
+        </Button>
+        <Button fx:id="cancel" mnemonicParsing="false" onMouseClicked="#cancel" text="Cancel" />
+      </children>
+      <BorderPane.margin>
+        <Insets fx:id="x2" />
+      </BorderPane.margin>
+    </HBox>
+  </bottom>
+  <center>
+    <ListView fx:id="list" prefHeight="200.0" prefWidth="501.0" />
+  </center>
+  <right>
+    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" BorderPane.margin="$x2">
+      <children>
+        <RadioButton fx:id="male" mnemonicParsing="false" text="Male" textAlignment="LEFT">
+          <VBox.margin>
+            <Insets right="16.0" />
+          </VBox.margin>
+        </RadioButton>
+        <RadioButton fx:id="female" mnemonicParsing="false" text="Female" textAlignment="LEFT">
+          <VBox.margin>
+            <Insets top="20.0" />
+          </VBox.margin>
+        </RadioButton>
+      </children>
+    </VBox>
+  </right>
+  <top>
+    <HBox alignment="CENTER" prefHeight="63.0" prefWidth="443.0">
+      <children>
+        <Label text="Add photo">
+          <font>
+            <Font name="System Bold" size="20.0" />
+          </font>
+        </Label>
+      </children>
+    </HBox>
+  </top>
+</BorderPane>

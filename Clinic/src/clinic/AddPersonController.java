@@ -55,13 +55,14 @@ public class AddPersonController implements Initializable {
     private Stage stage;
     private String title;
     private Scene scene;
+    private ClinicDBAccess clinic;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        ClinicDBAccess clinic = ClinicDBAccess.getSingletonClinicDBAccess();
     }    
     
     public void initStage(Stage stage)
@@ -77,9 +78,9 @@ public class AddPersonController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("photos.fxml"));
         Parent root = loader.load();
         
-        AddPhotoController addPhoto = loader.<AddPhotoController>.getController();
+        PhotosController addPhoto = loader.<PhotosController>getController();
         
-        addPhoto.initStage(image, stage);
+        addPhoto.initStage(stage, image);
         Scene scene = new Scene(root);
         
         stage.setTitle("Add Photo");
@@ -92,9 +93,12 @@ public class AddPersonController implements Initializable {
     private void save(MouseEvent event)
     {
         Patient patient = new Patient(dni.getText(), name.getText(), surname.getText(), telephone.getText(), image.getImage());
-        ClinicDBAccess clinic = ClinicDBAccess.getSingletonClinicDBAccess();
+
         clinic.getPatients().add(patient);
         clinic.saveDB();
+        stage.setTitle(title);
+        stage.setScene(scene);
+        stage.show();
     }
     
     @FXML
