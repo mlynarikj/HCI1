@@ -59,13 +59,16 @@ public class AppointmentListPage extends MainWindowController {
 
     @FXML
     private void view(MouseEvent mouseEvent) {
-        this.<ViewAppointment>loadScene(Constants.APPOINTMENTS_VIEW,
-                p -> p.initAppointment(appointmentTable.getSelectionModel().getSelectedItem()));
+        if (appointmentTable.getSelectionModel().getSelectedItem() != null) {
+            this.<ViewAppointment>loadScene(Constants.APPOINTMENTS_VIEW,
+                    p -> p.initAppointment(appointmentTable.getSelectionModel().getSelectedItem()));
+        }
     }
 
     @FXML
     private void delete(MouseEvent mouseEvent) {
         Appointment delete = appointmentTable.getSelectionModel().getSelectedItem();
+        if (delete == null) return;
         if (delete.getAppointmentDateTime().isBefore(LocalDateTime.now())) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -77,8 +80,12 @@ public class AppointmentListPage extends MainWindowController {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Deleting an appointment");
-        alert.setContentText("You are about to delete an appointment for doctor "+delete.getDoctor().getSurname()+" and patient "+delete.getPatient().getSurname());
-        alert.showAndWait().ifPresent(p->{if(p == ButtonType.OK){appointmentList.remove(delete);}});
+        alert.setContentText("You are about to delete an appointment for doctor " + delete.getDoctor().getSurname() + " and patient " + delete.getPatient().getSurname());
+        alert.showAndWait().ifPresent(p -> {
+            if (p == ButtonType.OK) {
+                appointmentList.remove(delete);
+            }
+        });
     }
 
     @Override

@@ -1,19 +1,29 @@
 package clinic;
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import model.Appointment;
 import model.Days;
 import model.Doctor;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ViewDoctor extends MainWindowController {
 
+    @FXML
+    private TableView<Appointment> appointmentTable;
+    @FXML
+    private TableColumn<Appointment, String> patient;
+    @FXML
+    private TableColumn<Appointment, LocalDateTime> dateTime;
     @FXML
     private TextField from;
     @FXML
@@ -52,7 +62,6 @@ public class ViewDoctor extends MainWindowController {
     }
 
     public void initDoctor(Doctor doctor){
-//        TODO add appointments
         from.setText(doctor.getVisitStartTime().format(timeFormatter));
         to.setText(doctor.getVisitEndTime().format(timeFormatter));
         dni.setText(doctor.getIdentifier());
@@ -65,5 +74,21 @@ public class ViewDoctor extends MainWindowController {
         for (Days day:  doctor.getVisitDays()){
             checkBoxes.get(day.ordinal()).setSelected(true);
         }
+
+        appointmentTable.setItems(FXCollections.observableList(clinicDBAccess.getDoctorAppointments(doctor.getIdentifier())));
+        dateTime.setCellValueFactory(param -> new SimpleObjectProperty<LocalDateTime>(param.getValue().getAppointmentDateTime()));
+
+        dateTime.setCellFactory(col -> new TableCell<Appointment, LocalDateTime>() {
+            @Override
+            protected void updateItem(LocalDateTime item, boolean empty) {
+
+                super.updateItem(item, empty);
+                if (empty)
+                    setText(null);
+                else
+                    setText(item.format(DateTimeFormatter.ofPattern("HH:mm d. MMM. YYYY")));
+            }
+        });
+        patient.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPatient().getSurname()));
     }
 }

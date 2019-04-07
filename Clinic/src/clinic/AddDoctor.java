@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.util.StringConverter;
+import jfxtras.scene.control.LocalTimePicker;
 import model.Days;
 import model.Doctor;
 import model.ExaminationRoom;
@@ -35,9 +36,9 @@ public class AddDoctor extends MainWindowController {
     @FXML
     private ChoiceBox<ExaminationRoom> room;
     @FXML
-    private TextField from;
+    private LocalTimePicker from;
     @FXML
-    private TextField to;
+    private LocalTimePicker to;
     @FXML
     private CheckBox monday;
     @FXML
@@ -72,11 +73,8 @@ public class AddDoctor extends MainWindowController {
     @Override
     public void initClinic(ClinicDBAccess clinicDBAccess) {
         super.initClinic(clinicDBAccess);
-        //TODO fix timeFormatter for textfields
         doctorList = FXCollections.observableList(clinicDBAccess.getDoctors());
         ArrayList<ExaminationRoom> available = clinicDBAccess.getExaminationRooms();
-//        List<ExaminationRoom> taken = doctorList.stream().map(Doctor::getExaminationRoom).collect(Collectors.toList());
-//        available.removeAll(taken);
         available = available.stream().filter(p ->
                 doctorList.stream().noneMatch(q -> q.getExaminationRoom().getIdentNumber() == p.getIdentNumber())).collect(Collectors.toCollection(ArrayList::new));
         room.setItems(FXCollections.observableArrayList(available));
@@ -95,20 +93,37 @@ public class AddDoctor extends MainWindowController {
         });
         room.getSelectionModel().selectFirst();
         checkBoxes.addAll(Arrays.asList(monday, tuesday, wednesday, thursday, friday, saturday, sunday));
-
+        from.setMinuteStep(15);
+        to.setMinuteStep(15);
     }
 
     public void save(MouseEvent mouseEvent) {
-//        TODO check error values
         StringBuilder errors = new StringBuilder();
         Doctor doctor = new Doctor();
         doctor.setExaminationRoom(room.getValue());
         doctor.setIdentifier(dni.getText());
+        if (doctor.getIdentifier().isEmpty()) {
+            errors.append("DNI cannot be empty\n");
+        }
         doctor.setName(name.getText());
+        if (doctor.getName().isEmpty()) {
+            errors.append("Name cannot be empty\n");
+        }
         doctor.setSurname(surname.getText());
+        if (doctor.getSurname().isEmpty()) {
+            errors.append("Surname cannot be empty\n");
+        }
         doctor.setTelephon(telephone.getText());
-        doctor.setVisitStartTime(LocalTime.parse(from.getText(), timeFormatter));
-        doctor.setVisitEndTime(LocalTime.parse(to.getText(), timeFormatter));
+        if (doctor.getTelephon().isEmpty()) {
+            errors.append("Telephone cannot be empty\n");
+        }
+        doctor.setVisitStartTime(from.getLocalTime());
+        doctor.setVisitEndTime(to.getLocalTime());
+
+        if (doctor.getVisitStartTime().isAfter(doctor.getVisitEndTime())
+                || (from.getLocalTime().getHour() == to.getLocalTime().getHour() && from.getLocalTime().getMinute() == to.getLocalTime().getMinute())) {
+            errors.append("The doctor cannot travel in time and end the visit before starting it.\n");
+        }
         ArrayList<Days> days = new ArrayList<>();
         for (int i = 0; i < checkBoxes.size(); i++) {
             if (checkBoxes.get(i).isSelected()) {
@@ -125,7 +140,6 @@ public class AddDoctor extends MainWindowController {
             alert.setTitle("Invalid doctor");
             alert.setContentText(errors.toString());
             alert.show();
-
             return;
         }
         doctorList.add(doctor);

@@ -12,6 +12,7 @@ import model.Doctor;
 import model.Patient;
 
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class ViewAppointment extends MainWindowController {
@@ -33,7 +34,7 @@ public class ViewAppointment extends MainWindowController {
     public void initAppointment(Appointment appointment) {
         patient.setText(appointment.getPatient().getName() + " " + appointment.getPatient().getSurname());
         doctor.setText(appointment.getDoctor().getName() + " " + appointment.getDoctor().getSurname());
-        slot.setText(appointment.getAppointmentDateTime().toString());
+        slot.setText(appointment.getAppointmentDateTime().format(DateTimeFormatter.ofPattern("HH:mm d. MMM. YYYY")));
         room.setText(appointment.getDoctor().getExaminationRoom().getIdentNumber()+"");
     }
 

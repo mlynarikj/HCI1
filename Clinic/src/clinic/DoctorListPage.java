@@ -39,9 +39,6 @@ public class DoctorListPage extends MainWindowController {
     private ObservableList<Doctor> doctorList;
 
 
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         super.initialize(url, rb);
@@ -64,14 +61,17 @@ public class DoctorListPage extends MainWindowController {
 
     @FXML
     private void view(MouseEvent mouseEvent) {
-        this.<ViewDoctor>loadScene(Constants.DOCTORS_VIEW, p->p.initDoctor(doctorTable.getSelectionModel().getSelectedItem()));
+        if (doctorTable.getSelectionModel().getSelectedItem() != null) {
+            this.<ViewDoctor>loadScene(Constants.DOCTORS_VIEW, p -> p.initDoctor(doctorTable.getSelectionModel().getSelectedItem()));
+        }
     }
 
     @FXML
     private void delete(MouseEvent mouseEvent) {
         Doctor delete = doctorTable.getSelectionModel().getSelectedItem();
+        if (delete == null) return;
         //TODO what if a doctor has an appointment in the past??
-        if (clinicDBAccess.hasAppointments(delete)){
+        if (clinicDBAccess.hasAppointments(delete)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Unable to delete");
             alert.setContentText("Cannot delete a doctor with an appointment");
@@ -79,9 +79,13 @@ public class DoctorListPage extends MainWindowController {
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Deleting doctor "+delete.getSurname());
-        alert.setContentText("You are about to delete doctor: "+delete.getSurname());
-        alert.showAndWait().ifPresent(p->{if(p == ButtonType.OK){doctorList.remove(delete);}});
+        alert.setTitle("Deleting doctor " + delete.getSurname());
+        alert.setContentText("You are about to delete doctor: " + delete.getSurname());
+        alert.showAndWait().ifPresent(p -> {
+            if (p == ButtonType.OK) {
+                doctorList.remove(delete);
+            }
+        });
 
     }
 
