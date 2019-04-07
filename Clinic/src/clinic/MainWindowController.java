@@ -6,19 +6,27 @@
 
 package clinic;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
+import DBAccess.ClinicDBAccess;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import model.Appointment;
+import model.Doctor;
+import model.Patient;
 
 /**
  * FXML Controller class
@@ -34,40 +42,68 @@ public class MainWindowController implements Initializable {
     @FXML
     private Button appointments;
 
-    private Stage stage;
+    protected Stage stage;
 
+    protected ClinicDBAccess clinicDBAccess;
+
+    protected DateTimeFormatter timeFormatter = DateTimeFormatter.ISO_LOCAL_TIME;
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    }
 
     public void initStage(Stage primaryStage) {
         this.stage = primaryStage;
     }
 
+    public void initClinic(ClinicDBAccess clinicDBAccess){
+        this.clinicDBAccess = clinicDBAccess;
+    }
+
     @FXML
-    private void patients(MouseEvent mouseEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("patients.fxml"));
+    protected void patients(MouseEvent mouseEvent) {
+        loadScene("patients.fxml");
+    }
 
-        Parent root = loader.load();
+    @FXML
+    protected void doctors(MouseEvent mouseEvent) {
+        loadScene(Constants.DOCTORS_LIST);
+    }
 
-        PatientsController patientsController = loader.<PatientsController>getController();
+    @FXML
+    protected void appointments(MouseEvent mouseEvent) {
+        loadScene(Constants.APPOINTMENTS_LIST);
+    }
 
-        patientsController.initStage(stage);
+
+    protected <T extends MainWindowController> T loadScene(String fxml, Consumer<T> function) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        Parent root;
+        try {
+                root = loader.load();
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid doctor");
+            alert.setContentText(e.getMessage());
+            alert.show();
+            return null;
+        }
+        T controller = loader.getController();
+        controller.initStage(stage);
+        controller.initClinic(clinicDBAccess);
+        function.accept(controller);
         Scene scene = new Scene(root);
-        stage.setTitle("Add Patient");
         stage.setScene(scene);
         stage.show();
-
+        return controller;
     }
 
-    @FXML
-    public void doctors(MouseEvent mouseEvent) {
-    }
-
-    @FXML
-    public void appointments(MouseEvent mouseEvent) {
+    protected <T extends MainWindowController> T loadScene(String fxml) {
+        return loadScene(fxml, t -> {
+        });
     }
 }
+
+
+

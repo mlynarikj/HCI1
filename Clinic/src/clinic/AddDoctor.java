@@ -1,63 +1,114 @@
 package clinic;
 
 import DBAccess.ClinicDBAccess;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.input.DataFormat;
 import javafx.scene.input.MouseEvent;
+import javafx.util.StringConverter;
 import model.Days;
 import model.Doctor;
 import model.ExaminationRoom;
 
-import java.io.File;
+import java.net.URL;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
-public class AddDoctor {
+public class AddDoctor extends MainWindowController {
 
+    @FXML
+    private TextField dni;
+    @FXML
+    private TextField name;
+    @FXML
+    private TextField surname;
+    @FXML
+    private TextField telephone;
+    @FXML
+    private ChoiceBox<ExaminationRoom> room;
+    @FXML
+    private TextField from;
+    @FXML
+    private TextField to;
+    @FXML
+    private CheckBox monday;
+    @FXML
+    private CheckBox tuesday;
+    @FXML
+    private CheckBox wednesday;
+    @FXML
+    private CheckBox thursday;
+    @FXML
+    private CheckBox friday;
+    @FXML
+    private CheckBox saturday;
+    @FXML
+    private CheckBox sunday;
+    private ArrayList<CheckBox> checkBoxes = new ArrayList<>();
 
-    public TextField dni;
-    public TextField name;
-    public TextField surname;
-    public TextField telephone;
-    public ChoiceBox<ExaminationRoom> room;
-    public TextField from;
-    public TextField to;
-    public CheckBox monday;
-    public CheckBox tuesday;
-    public CheckBox wednesday;
-    public CheckBox thursday;
-    public CheckBox friday;
-    public CheckBox saturday;
-    public CheckBox sunday;
-    private ArrayList<CheckBox> checkBoxes =
-            new ArrayList<>(Arrays.asList(monday, tuesday, wednesday, thursday, friday, saturday, sunday));
-    private StringBuilder errors = new StringBuilder();
-
-    private DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_TIME;
+    private ObservableList<Doctor> doctorList;
 
     private Image photograph;
+
+
     public void addPhoto(MouseEvent mouseEvent) {
-//        TODO open photo dialog
+//        TODO fix photo dialog
+        loadScene(Constants.PHOTOS);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        super.initialize(url, rb);
+    }
+
+    @Override
+    public void initClinic(ClinicDBAccess clinicDBAccess) {
+        super.initClinic(clinicDBAccess);
+        //TODO fix timeFormatter for textfields
+        doctorList = FXCollections.observableList(clinicDBAccess.getDoctors());
+        ArrayList<ExaminationRoom> available = clinicDBAccess.getExaminationRooms();
+//        List<ExaminationRoom> taken = doctorList.stream().map(Doctor::getExaminationRoom).collect(Collectors.toList());
+//        available.removeAll(taken);
+        available = available.stream().filter(p ->
+                doctorList.stream().noneMatch(q -> q.getExaminationRoom().getIdentNumber() == p.getIdentNumber())).collect(Collectors.toCollection(ArrayList::new));
+        room.setItems(FXCollections.observableArrayList(available));
+
+        room.setConverter(new StringConverter<ExaminationRoom>() {
+            @Override
+            public String toString(ExaminationRoom object) {
+                return object.getIdentNumber() + " " + object.getEquipmentDescription();
+            }
+
+            @Override
+            public ExaminationRoom fromString(String string) {
+                int ident = Integer.valueOf(string.split(" ")[0]);
+                return clinicDBAccess.getExaminationRooms().stream().filter(p -> p.getIdentNumber() == ident).findFirst().get();
+            }
+        });
+        room.getSelectionModel().selectFirst();
+        checkBoxes.addAll(Arrays.asList(monday, tuesday, wednesday, thursday, friday, saturday, sunday));
+
     }
 
     public void save(MouseEvent mouseEvent) {
-
-//        TODO check more values
+//        TODO check error values
+        StringBuilder errors = new StringBuilder();
         Doctor doctor = new Doctor();
         doctor.setExaminationRoom(room.getValue());
         doctor.setIdentifier(dni.getText());
         doctor.setName(name.getText());
         doctor.setSurname(surname.getText());
         doctor.setTelephon(telephone.getText());
-        doctor.setVisitStartTime(LocalTime.parse(from.getText(), formatter));
-        doctor.setVisitEndTime(LocalTime.parse(to.getText(), formatter));
+        doctor.setVisitStartTime(LocalTime.parse(from.getText(), timeFormatter));
+        doctor.setVisitEndTime(LocalTime.parse(to.getText(), timeFormatter));
         ArrayList<Days> days = new ArrayList<>();
         for (int i = 0; i < checkBoxes.size(); i++) {
             if (checkBoxes.get(i).isSelected()) {
@@ -69,20 +120,24 @@ public class AddDoctor {
         }
         doctor.setVisitDays(days);
         doctor.setPhoto(photograph);
-        if (errors.length() == 0){
+        if (errors.length() != 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid doctor");
             alert.setContentText(errors.toString());
+            alert.show();
+
             return;
         }
-        ClinicDBAccess clinicDBAccess = ClinicDBAccess.getSingletonClinicDBAccess();
-        clinicDBAccess.getDoctors().add(doctor);
-        clinicDBAccess.saveDB();
-
+        doctorList.add(doctor);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Doctor created");
+        alert.setContentText("Doctor" + name.getText() + " " + surname.getText() + " created");
+        alert.show();
+        loadScene(Constants.DOCTORS_LIST);
     }
 
     public void cancel(MouseEvent mouseEvent) {
-//        TODO switch back to the original view and possibly erase values
+        loadScene(Constants.DOCTORS_LIST);
     }
 
 }

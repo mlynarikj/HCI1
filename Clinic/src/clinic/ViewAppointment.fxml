@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?scenebuilder-classpath-element ../../resources?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="clinic.ViewAppointment">
+  <bottom>
+    <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="600.0" spacing="20.0">
+      <padding>
+        <Insets right="20.0" />
+      </padding>
+      <Button mnemonicParsing="false" onMouseClicked="#cancel" text="Back" />
+    </HBox>
+  </bottom>
+  <center>
+    <GridPane prefHeight="329.0" prefWidth="-1.0">
+      <children>
+        <Label alignment="CENTER_RIGHT" text="Patient" GridPane.columnIndex="0" GridPane.rowIndex="0">
+          <font>
+            <Font name="System Bold Italic" size="18.0" fx:id="x1" />
+          </font>
+        </Label>
+        <Label alignment="CENTER_RIGHT" font="$x1" text="Doctor" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Label alignment="CENTER_RIGHT" font="$x1" text="Time slot" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Label fx:id="patient" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Label fx:id="doctor" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label fx:id="slot" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label alignment="CENTER_RIGHT" font="$x1" text="Examination room number" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Label id="slot" fx:id="room" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      </children>
+      <columnConstraints>
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+        <ColumnConstraints hgrow="SOMETIMES" />
+      </columnConstraints>
+      <padding>
+        <Insets left="10.0" right="10.0" />
+      </padding>
+      <rowConstraints>
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </center>
+  <left>
+    <VBox spacing="20.0">
+      <padding>
+        <Insets left="10.0" />
+      </padding>
+    </VBox>
+  </left>
+  <right>
+    <VBox spacing="20.0">
+      <padding>
+        <Insets left="10.0" />
+      </padding>
+    </VBox>
+  </right>
+  <top>
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <Label text="Appointment Detail" textFill="BLACK" textOverrun="CENTER_ELLIPSIS">
+        <font>
+          <Font name="System Bold" size="22.0" />
+        </font>
+      </Label>
+    </HBox>
+  </top>
+</BorderPane>

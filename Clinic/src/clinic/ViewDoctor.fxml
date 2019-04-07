@@ -11,14 +11,13 @@
 <?import javafx.scene.text.*?>
 <?scenebuilder-classpath-element ../../resources?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="clinic.AddDoctor">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="clinic.ViewDoctor">
   <bottom>
     <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="600.0" spacing="20.0">
       <padding>
         <Insets right="20.0" />
       </padding>
-      <Button mnemonicParsing="false" onMouseClicked="#save" text="Save" />
-      <Button mnemonicParsing="false" onMouseClicked="#cancel" text="Cancel" />
+      <Button mnemonicParsing="false" onMouseClicked="#cancel" text="Back" />
     </HBox>
   </bottom>
   <center>
@@ -29,49 +28,41 @@
             <Font name="System Bold Italic" size="18.0" fx:id="x1" />
           </font>
         </Label>
-        <TextField fx:id="dni" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-        <TextField fx:id="name" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <Label alignment="CENTER_RIGHT" font="$x1" text="Name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
         <Label alignment="CENTER_RIGHT" font="$x1" text="Surname" GridPane.columnIndex="0" GridPane.rowIndex="2" />
         <Label alignment="CENTER_RIGHT" font="$x1" text="Telephone" GridPane.columnIndex="0" GridPane.rowIndex="3" />
         <Label alignment="CENTER_RIGHT" font="$x1" text="Examination room" GridPane.columnIndex="0" GridPane.rowIndex="4" />
         <Label alignment="CENTER_RIGHT" font="$x1" text="Working hours" GridPane.columnIndex="0" GridPane.rowIndex="5" />
         <Label alignment="CENTER_RIGHT" font="$x1" text="Working days" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-        <ChoiceBox fx:id="room" maxWidth="1.7976931348623157E308" prefWidth="365.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-          <items>
-            <FXCollections fx:factory="observableArrayList">
-              <String fx:value="Item 1" />
-              <String fx:value="Item 2" />
-              <String fx:value="Item 3" />
-            </FXCollections>
-          </items>
-        </ChoiceBox>
-        <TextField fx:id="telephone" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <TextField fx:id="surname" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
         <HBox prefHeight="24.0" prefWidth="365.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-          <TextField fx:id="from" prefWidth="200.0" promptText="From" text="8:00" />
-          <TextField fx:id="to" prefWidth="200.0" promptText="To" text="16:00" />
+          <TextField fx:id="from" editable="false" prefWidth="200.0" promptText="From" text="8:00" />
+          <TextField fx:id="to" editable="false" prefWidth="200.0" promptText="To" text="16:00" />
         </HBox>
         <VBox prefHeight="120.0" prefWidth="345.0" spacing="5.0" style="-fx-border-width: 1;&#10;-fx-border-color: gray;&#10;-fx-border-radius: 5;&#10;" GridPane.columnIndex="1" GridPane.rowIndex="6">
           <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
           </padding>
           <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0">
-            <CheckBox fx:id="monday" mnemonicParsing="false" prefWidth="102.0" text="Monday" />
-            <CheckBox fx:id="friday" mnemonicParsing="false" text="Friday" />
+            <CheckBox fx:id="monday" disable="true" mnemonicParsing="false" prefWidth="102.0" style="-fx-opacity: 1;" text="Monday" />
+            <CheckBox fx:id="friday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1;" text="Friday" />
           </HBox>
           <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0">
-            <CheckBox fx:id="tuesday" mnemonicParsing="false" prefWidth="102.0" text="Tuesday" />
-            <CheckBox fx:id="saturday" mnemonicParsing="false" text="Saturday" />
+            <CheckBox fx:id="tuesday" disable="true" mnemonicParsing="false" prefWidth="102.0" style="-fx-opacity: 1" text="Tuesday" />
+            <CheckBox fx:id="saturday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1" text="Saturday" />
           </HBox>
           <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0">
-            <CheckBox fx:id="wednesday" mnemonicParsing="false" prefWidth="102.0" text="Wednesday" />
-            <CheckBox fx:id="sunday" mnemonicParsing="false" text="Sunday" />
+            <CheckBox fx:id="wednesday" disable="true" mnemonicParsing="false" prefWidth="102.0" style="-fx-opacity: 1" text="Wednesday" />
+            <CheckBox fx:id="sunday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1" text="Sunday" />
           </HBox>
           <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0">
-            <CheckBox fx:id="thursday" mnemonicParsing="false" text="Thursday" />
+            <CheckBox fx:id="thursday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1" text="Thursday" />
           </HBox>
         </VBox>
+        <Label fx:id="dni" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Label fx:id="name" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label fx:id="surname" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label fx:id="phone" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label fx:id="room" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       </children>
       <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
@@ -97,19 +88,13 @@
   </left>
   <right>
     <VBox alignment="CENTER" prefWidth="144.0">
-      <ImageView fitHeight="80.0" fitWidth="77.25714401971726" onMouseClicked="#addPhoto" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../../resources/plus.png" />
+      <ImageView fx:id="imgView" fitHeight="80.0" fitWidth="77.25714401971726" pickOnBounds="true" preserveRatio="true">
       </ImageView>
-      <Label text="Add photo">
-        <font>
-          <Font name="System Bold" size="15.0" />
-        </font>
-      </Label>
     </VBox>
   </right>
   <top>
     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-      <Label text="Doctor Form" textFill="BLACK" textOverrun="CENTER_ELLIPSIS">
+      <Label text="Doctor Details" textFill="BLACK" textOverrun="CENTER_ELLIPSIS">
         <font>
           <Font name="System Bold" size="22.0" />
         </font>

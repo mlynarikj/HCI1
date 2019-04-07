@@ -7,6 +7,8 @@
 package clinic;
 
 import java.io.IOException;
+
+import DBAccess.ClinicDBAccess;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -33,6 +35,7 @@ public class Clinic extends Application {
         MainWindowController main = loader.<MainWindowController>getController();
         
         main.initStage(primaryStage);
+        main.initClinic(ClinicDBAccess.getSingletonClinicDBAccess());
         
         Scene scene = new Scene(root);
         //Application.setUserAgentStylesheet(Application.CASPIAN);

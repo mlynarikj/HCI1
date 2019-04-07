@@ -1,0 +1,46 @@
+package clinic;
+
+import DBAccess.ClinicDBAccess;
+import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import model.Appointment;
+import model.Days;
+import model.Doctor;
+import model.Patient;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ViewAppointment extends MainWindowController {
+
+    @FXML
+    private Label patient;
+    @FXML
+    private Label doctor;
+    @FXML
+    private Label slot;
+    @FXML
+    private Label room;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        super.initialize(url, rb);
+    }
+
+    public void initAppointment(Appointment appointment) {
+        patient.setText(appointment.getPatient().getName() + " " + appointment.getPatient().getSurname());
+        doctor.setText(appointment.getDoctor().getName() + " " + appointment.getDoctor().getSurname());
+        slot.setText(appointment.getAppointmentDateTime().toString());
+        room.setText(appointment.getDoctor().getExaminationRoom().getIdentNumber()+"");
+    }
+
+
+
+    public void cancel(MouseEvent mouseEvent) {
+        loadScene(Constants.APPOINTMENTS_LIST);
+    }
+
+}
