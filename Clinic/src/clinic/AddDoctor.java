@@ -9,6 +9,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.StringConverter;
 import jfxtras.scene.control.LocalTimePicker;
@@ -25,6 +26,8 @@ import java.util.stream.Collectors;
 
 public class AddDoctor extends MainWindowController {
 
+    @FXML
+    private ImageView imageView;
     @FXML
     private TextField dni;
     @FXML
@@ -61,8 +64,11 @@ public class AddDoctor extends MainWindowController {
 
 
     public void addPhoto(MouseEvent mouseEvent) {
-//        TODO fix photo dialog
-        loadScene(Constants.PHOTOS);
+        this.<PhotosController>loadScene(Constants.PHOTOS,
+                photosController -> {
+                    photosController.initPrevious(stage.getScene());
+                    photosController.initImageView(imageView);
+                });
     }
 
     @Override
@@ -134,7 +140,7 @@ public class AddDoctor extends MainWindowController {
             errors.append("Doctor has to visit at least one day of the week!\n");
         }
         doctor.setVisitDays(days);
-        doctor.setPhoto(photograph);
+        doctor.setPhoto(imageView.getImage());
         if (errors.length() != 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid doctor");

@@ -124,7 +124,7 @@
   </left>
   <right>
     <VBox alignment="CENTER" prefWidth="144.0">
-      <ImageView fitHeight="80.0" fitWidth="77.25714401971726" onMouseClicked="#addPhoto" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imageView" fitHeight="80.0" fitWidth="80" onMouseClicked="#addPhoto" pickOnBounds="true" preserveRatio="true">
         <Image url="@../../resources/plus.png" />
       </ImageView>
       <Label text="Add photo">

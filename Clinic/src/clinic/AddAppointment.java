@@ -52,7 +52,6 @@ public class AddAppointment extends MainWindowController {
     @Override
     public void initClinic(ClinicDBAccess clinicDBAccess) {
         super.initClinic(clinicDBAccess);
-        //TODO initialize the time fields
         patient.setItems(FXCollections.observableList(PersonWrapper.convert(clinicDBAccess.getPatients())));
         patient.getSelectionModel().selectFirst();
         doctor.setItems(FXCollections.observableList(PersonWrapper.convert(clinicDBAccess.getDoctors())));

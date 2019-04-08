@@ -1,6 +1,7 @@
 package clinic;
 
 import DBAccess.ClinicDBAccess;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -45,6 +46,13 @@ public class DoctorListPage extends MainWindowController {
         doctorTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         name.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
         surname.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getSurname()));
+
+        view.disableProperty().bind(
+                Bindings.equal(-1,
+                        doctorTable.getSelectionModel().selectedIndexProperty()));
+        delete.disableProperty().bind(
+                Bindings.equal(-1,
+                        doctorTable.getSelectionModel().selectedIndexProperty()));
     }
 
     @Override
@@ -70,7 +78,6 @@ public class DoctorListPage extends MainWindowController {
     private void delete(MouseEvent mouseEvent) {
         Doctor delete = doctorTable.getSelectionModel().getSelectedItem();
         if (delete == null) return;
-        //TODO what if a doctor has an appointment in the past??
         if (clinicDBAccess.hasAppointments(delete)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Unable to delete");

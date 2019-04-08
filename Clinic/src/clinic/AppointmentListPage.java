@@ -1,6 +1,7 @@
 package clinic;
 
 import DBAccess.ClinicDBAccess;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -50,6 +51,13 @@ public class AppointmentListPage extends MainWindowController {
         appointmentTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         doctor.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getDoctor().getSurname()));
         patient.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPatient().getSurname()));
+
+        view.disableProperty().bind(
+                Bindings.equal(-1,
+                        appointmentTable.getSelectionModel().selectedIndexProperty()));
+        delete.disableProperty().bind(
+                Bindings.equal(-1,
+                        appointmentTable.getSelectionModel().selectedIndexProperty()));
     }
 
     @FXML
