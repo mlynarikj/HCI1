@@ -8,7 +8,6 @@ package clinic;
 
 import java.io.File;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -69,9 +68,8 @@ public class PhotosController extends MainWindowController  {
         }
         else
         {
-            //File dir = new File(PhotosController.class.getClassLoader().getResource("clinic/female").getPath());
-            File file = Paths.get(".", "resources", "female").normalize().toFile();
-            for(final File image : file.listFiles())
+            File dir = new File(PhotosController.class.getClassLoader().getResource("clinic/female").getPath());
+            for(final File image : dir.listFiles())
             {
                     photos.add(new Image(image.toURI().toString()));
             }
