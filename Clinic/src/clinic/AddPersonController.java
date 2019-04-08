@@ -95,26 +95,25 @@ public class AddPersonController implements Initializable {
     private void save(MouseEvent event)
     {
 
-        if(image == null)
-        {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error box");
-            alert.setHeaderText("CHoose now");
-            alert.setContentText("PAtient could not be registrered due to lack of photo");
-            ButtonType buttonTypeCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.isPresent())
-                System.out.println("Cancel");        }
-        else
-        {
+//        if(image == null)
+//        {
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Error box");
+//            alert.setHeaderText("CHoose now");
+//            alert.setContentText("PAtient could not be registrered due to lack of photo");
+//            ButtonType buttonTypeCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+//            Optional<ButtonType> result = alert.showAndWait();
+//            if (result.isPresent())
+//                System.out.println("Cancel");        }
+
         Patient patient = new Patient(dni.getText(), name.getText(), surname.getText(), telephone.getText(), image.getImage());
 
         clinic.getPatients().add(patient);
-        clinic.saveDB();
         stage.setTitle(title);
         stage.setScene(scene);
-        stage.show();}
+        stage.show();
     }
+
     
     @FXML
     private void cancel(MouseEvent event)

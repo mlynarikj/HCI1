@@ -22,56 +22,50 @@
     </HBox>
   </bottom>
   <center>
-    <Pane prefHeight="200.0" prefWidth="383.0">
+    <GridPane alignment="CENTER">
       <children>
-        <TextField fx:id="dni" layoutX="57.0" layoutY="14.0" prefWidth="200.0" />
-        <TextField fx:id="name" layoutX="57.0" layoutY="55.0" prefWidth="200.0" />
-        <TextField fx:id="surname" layoutX="57.0" layoutY="97.0" prefWidth="200.0" />
-        <TextField fx:id="telephone" layoutX="57.0" layoutY="135.0" prefWidth="200.0" />
-        <TextField fx:id="photography" layoutX="57.0" layoutY="171.0" prefWidth="200.0" />
-      </children>
-    </Pane>
-  </center>
-  <left>
-    <VBox prefHeight="234.0" prefWidth="144.0">
-      <children>
-        <Label alignment="CENTER_RIGHT" text="DNI">
+        <Label text="DNI" GridPane.columnIndex="0" GridPane.rowIndex="0">
           <font>
-            <Font name="System Bold Italic" size="18.0" fx:id="x1" />
+            <Font name="System Bold" size="18.0" fx:id="x1" />
           </font>
-          <VBox.margin>
-            <Insets left="20.0" top="15.0" fx:id="x2" />
-          </VBox.margin>
         </Label>
-        <Label alignment="CENTER_RIGHT" font="$x1" text="Name" VBox.margin="$x2" />
-        <Label alignment="CENTER_RIGHT" font="$x1" text="Surname" VBox.margin="$x2" />
-        <Label alignment="CENTER_RIGHT" font="$x1" text="Telephone" VBox.margin="$x2" />
-        <Label alignment="CENTER_RIGHT" font="$x1" text="Photography" VBox.margin="$x2" />
+        <Label font="$x1" text="Name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Label font="$x1" text="Surname" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Label font="$x1" text="Telephone" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       </children>
-    </VBox>
-  </left>
+      <columnConstraints>
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </center>
   <right>
     <VBox alignment="CENTER" prefHeight="220.0" prefWidth="144.0">
       <children>
         <ImageView fx:id="photo" fitHeight="80.0" fitWidth="77.25714401971726" onMouseClicked="#addPhoto" pickOnBounds="true" preserveRatio="true" />
-        <Label text="Add photo">
-          <font>
-            <Font name="System Bold" size="15.0" />
-          </font>
-        </Label>
-        <Button mnemonicParsing="false" text="Button" />
+        <Button mnemonicParsing="false" onMouseClicked="#addPhoto" text="Add Photo" />
       </children>
     </VBox>
   </right>
   <top>
-    <HBox prefHeight="100.0" prefWidth="200.0">
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
       <children>
         <Label contentDisplay="LEFT" text="Patient Form" textFill="BLACK" textOverrun="CENTER_ELLIPSIS">
           <font>
             <Font name="System Bold" size="22.0" />
           </font>
           <HBox.margin>
-            <Insets left="230.0" top="33.0" />
+            <Insets />
           </HBox.margin>
         </Label>
       </children>

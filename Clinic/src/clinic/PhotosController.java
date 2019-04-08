@@ -6,7 +6,6 @@
 
 package clinic;
 
-import java.beans.EventHandler;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -18,16 +17,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageInputStream;
 
 /**
  * FXML Controller class
@@ -63,19 +56,19 @@ public class PhotosController implements Initializable  {
         if(male.isSelected())
         {        
        // File dir = new File("C:\\Users\\olemf\\OneDrive\\Dokumenter\\Utveksling\\Informaticas\\New Folder\\HCI1\\Clinic");
-            File dir = new File("file:///C://Users//olemf//OneDrive//Dokumenter//Utveksling//Informaticas//New Folder//HCI1//Clinic//resources//male");
+            File dir = new File(getClass().getResource("/clinic/male").getPath());
             for(final File image : dir.listFiles())
         {
-            photos.add(new Image(image.getPath()));
+            photos.add(new Image(image.toURI().toString()));
             
         }
         }
         else
         {
-            File dir = new File("file:///C://Users//olemf//OneDrive//Dokumenter//Utveksling//Informaticas//New Folder//HCI1//Clinic//resources//female");
+            File dir = new File(getClass().getResource("/clinic/female").getPath());
             for(final File image : dir.listFiles())
             {
-                    photos.add(new Image(image.getPath()));
+                    photos.add(new Image(image.toURI().toString()));
             }
         }
         

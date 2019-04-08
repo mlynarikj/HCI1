@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -31,9 +32,13 @@ import java.util.ResourceBundle;
  */
 public class PatientDetailsController implements Initializable {
     @FXML
+    private Label dni;
+    @FXML
     private Label name;
     @FXML
     private Label surname;
+    @FXML
+    private Label telephone;
     @FXML
     private ListView<String> list;
     @FXML
@@ -52,22 +57,11 @@ public class PatientDetailsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ArrayList<String> details = new ArrayList<String>();
-        obsData = FXCollections.observableArrayList(details);
-        list.setItems(obsData);
-        //name.setText(patient.getName());
-        //surname.setText(patient.getSurname());
-        if(patient == null)
-        {
-            obsData.add("Please choose a patient to view the his/her details");
-            stage.setTitle(title);
-            stage.setScene(scene);
-            stage.show();
-        }
-        obsData.add(patient.getName());
-        obsData.add(patient.getSurname());
-        obsData.add(patient.getIdentifier());
-        obsData.add(patient.getTelephon());
+
+        dni.setText(patient.getIdentifier());
+        name.setText(patient.getName());
+        surname.setText(patient.getSurname());
+        telephone.setText(patient.getTelephon());
         image.setImage(patient.getPhoto());
 
     }

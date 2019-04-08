@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import DBAccess.ClinicDBAccess;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -66,6 +67,11 @@ public class PatientsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        viewDetails.disableProperty().bind(
+                Bindings.equal(-1,
+                        list.getSelectionModel().selectedIndexProperty()));
+
         ArrayList<Patient> arrayList = new ArrayList<Patient>();
         obsList = FXCollections.observableArrayList(arrayList);
         list.setItems(obsList);
@@ -116,6 +122,7 @@ public class PatientsController implements Initializable {
         PatientDetailsController patientDetails = loader.<PatientDetailsController>getController();
 
         patientDetails.initStage(stage, list.getSelectionModel().getSelectedItem());
+
 
         Scene scene = new Scene(root);
 
