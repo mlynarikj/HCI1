@@ -8,6 +8,7 @@ package clinic;
 
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -27,7 +28,7 @@ import javafx.stage.Stage;
  *
  * @author olemf
  */
-public class PhotosController implements Initializable  {
+public class PhotosController extends MainWindowController  {
    
     @FXML
     private ListView<Image> list;
@@ -52,11 +53,14 @@ public class PhotosController implements Initializable  {
         
         photos = FXCollections.observableArrayList(images);
         list.setItems(photos);
-        
+
+
+
         if(male.isSelected())
         {        
        // File dir = new File("C:\\Users\\olemf\\OneDrive\\Dokumenter\\Utveksling\\Informaticas\\New Folder\\HCI1\\Clinic");
-            File dir = new File(getClass().getResource("/clinic/male").getPath());
+
+            File dir = new File(PhotosController.class.getClassLoader().getResource("clinic/male").getPath());
             for(final File image : dir.listFiles())
         {
             photos.add(new Image(image.toURI().toString()));
@@ -65,8 +69,9 @@ public class PhotosController implements Initializable  {
         }
         else
         {
-            File dir = new File(getClass().getResource("/clinic/female").getPath());
-            for(final File image : dir.listFiles())
+            //File dir = new File(PhotosController.class.getClassLoader().getResource("clinic/female").getPath());
+            File file = Paths.get(".", "resources", "female").normalize().toFile();
+            for(final File image : file.listFiles())
             {
                     photos.add(new Image(image.toURI().toString()));
             }
@@ -74,12 +79,10 @@ public class PhotosController implements Initializable  {
         
     }
 
-    public void initStage(Stage stage, ImageView image) {
-        this.stage = stage;
-        this.image = image;
-        scene = stage.getScene();
-        title = stage.getTitle();
-    }
+    public void initStage(Stage stage) {
+        super.initStage(stage);
+        stage.setTitle("Add photo");
+        }
 
     public void save(MouseEvent mouseEvent)
     {

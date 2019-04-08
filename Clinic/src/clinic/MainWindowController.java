@@ -63,7 +63,7 @@ public class MainWindowController implements Initializable {
 
     @FXML
     protected void patients(MouseEvent mouseEvent) {
-        loadScene("patients.fxml");
+        loadScene("Patients.fxml");
     }
 
     @FXML
@@ -84,7 +84,7 @@ public class MainWindowController implements Initializable {
                 root = loader.load();
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Invalid doctor");
+            alert.setTitle("Invalid fxml");
             alert.setContentText(e.getMessage());
             alert.show();
             return null;

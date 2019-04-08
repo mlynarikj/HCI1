@@ -6,14 +6,11 @@
 
 package clinic;
 
-import DBAccess.ClinicDBAccess;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -29,7 +26,7 @@ import model.Patient;
  *
  * @author olemf
  */
-public class AddPersonController implements Initializable {
+public class AddPersonController extends MainWindowController {
     @FXML
     private Font x1;
     @FXML
@@ -42,9 +39,7 @@ public class AddPersonController implements Initializable {
     private TextField surname;
     @FXML
     private TextField telephone;
-    @FXML
-    private TextField photography;
-    
+
     @FXML
     private Button save;
     @FXML
@@ -52,35 +47,31 @@ public class AddPersonController implements Initializable {
     @FXML
     private ImageView image;
     
-    private Stage stage;
-    private String title;
-    private Scene scene;
-    private ClinicDBAccess clinic;
+
+
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ClinicDBAccess clinic = ClinicDBAccess.getSingletonClinicDBAccess();
-    }    
-    
-    public void initStage(Stage stage)
-    {
-        this.stage = stage;
-        title = stage.getTitle();
-        scene = stage.getScene();
-        
+
+    }
+
+    @Override
+    public void initStage(Stage primaryStage) {
+        super.initStage(primaryStage);
+        primaryStage.setTitle("Add Patient");
     }
 
     @FXML
     private void addPhoto(MouseEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("photos.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Photos.fxml"));
         Parent root = loader.load();
         
         PhotosController addPhoto = loader.<PhotosController>getController();
         
-        addPhoto.initStage(stage, image);
+        addPhoto.initStage(stage);
         Scene scene = new Scene(root);
         
         stage.setTitle("Add Photo");
@@ -106,20 +97,48 @@ public class AddPersonController implements Initializable {
 //            if (result.isPresent())
 //                System.out.println("Cancel");        }
 
-        Patient patient = new Patient(dni.getText(), name.getText(), surname.getText(), telephone.getText(), image.getImage());
 
-        clinic.getPatients().add(patient);
-        stage.setTitle(title);
-        stage.setScene(scene);
-        stage.show();
+        StringBuilder errors = new StringBuilder();
+        Patient patient = new Patient();
+
+        patient.setIdentifier(dni.getText());
+        if (patient.getIdentifier().isEmpty()) {
+            errors.append("DNI cannot be empty\n");
+        }
+        patient.setName(name.getText());
+        if (patient.getName().isEmpty()) {
+            errors.append("Name cannot be empty\n");
+        }
+        patient.setSurname(surname.getText());
+        if (patient.getSurname().isEmpty()) {
+            errors.append("Surname cannot be empty\n");
+        }
+        patient.setTelephon(telephone.getText());
+        if (patient.getTelephon().isEmpty()) {
+            errors.append("Telephone cannot be empty\n");
+        }
+
+        if (errors.length() != 0) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid patient");
+            alert.setContentText(errors.toString());
+            alert.show();
+            return;
+        }
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Patient created");
+        alert.setContentText("Patient " + name.getText() + " " + surname.getText() + " created");
+        alert.show();
+
+        clinicDBAccess.getPatients().add(patient);
+        loadScene(Constants.PATIENTS_LIST);
     }
 
     
     @FXML
     private void cancel(MouseEvent event)
     {
-        stage.setTitle(title);
-        stage.setScene(scene);
-        stage.show();
+        loadScene(Constants.PATIENTS_LIST);
     }
 }

@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 
 import DBAccess.ClinicDBAccess;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,10 +22,10 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import model.Doctor;
 import model.Patient;
 
 /**
@@ -39,8 +40,7 @@ public class PatientsController extends MainWindowController {
     private Button doctors;
     @FXML
     private Button appointments;
-    @FXML
-    private ListView<Patient> list;
+
     @FXML
     private Button addPatient;
     @FXML
@@ -49,6 +49,12 @@ public class PatientsController extends MainWindowController {
     private Button deletePatient;
     @FXML
     private Button viewDetails;
+    @FXML
+    private TableView<Patient> patientTable;
+    @FXML
+    private TableColumn<Patient, String> name;
+    @FXML
+    private TableColumn<Patient, String> surname;
 
     private Scene scene;
     private String title;
@@ -62,56 +68,65 @@ public class PatientsController extends MainWindowController {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+
         viewDetails.disableProperty().bind(
                 Bindings.equal(-1,
-                        list.getSelectionModel().selectedIndexProperty()));
+                        patientTable.getSelectionModel().selectedIndexProperty()));
 
-        ArrayList<Patient> arrayList = new ArrayList<Patient>();
-        obsList = FXCollections.observableArrayList(arrayList);
-        list.setItems(obsList);
-    }    
+        name.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
+        surname.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getSurname()));
+
+    }
+
+    @Override
+    public void initClinic(ClinicDBAccess clinicDBAccess) {
+        super.initClinic(clinicDBAccess);
+        obsList = FXCollections.observableList(clinicDBAccess.getPatients());
+        patientTable.setItems(obsList);
+    }
+
+    @Override
+    public void initStage(Stage primaryStage) {
+        super.initStage(primaryStage);
+        primaryStage.setTitle("Patients");
+    }
 
 
 
     @FXML
     private void addPatient(MouseEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddPerson.fxml"));
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddPerson.fxml"));
+//
+//        Parent root = loader.load();
+//
+//        AddPersonController addPersonController = loader.getController();
+//
+//        addPersonController.initStage(stage);
 
-        Parent root = loader.load();
+        loadScene(Constants.PATIENTS_NEW);
 
-        AddPersonController addPersonController = loader.getController();
-
-        addPersonController.initStage(stage);
-        Scene scene = new Scene(root);
-        stage.setTitle("Add Patient");
-        stage.setScene(scene);
-        stage.show();
 
     }
 
     @FXML
     private void deletePatient(MouseEvent event) {
-        obsList.remove(list.getSelectionModel().getSelectedItems());
+        //clinicDBAccess.getPatients().remove(patientTable.getSelectionModel().getSelectedItem());
 
+        Patient delete = patientTable.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Deleting patient  " + delete.getSurname());
+        alert.setContentText("You are about to delete patient: " + delete.getSurname());
+        alert.showAndWait().ifPresent(p -> {
+            if (p == ButtonType.OK) {
+                obsList.remove(delete);
+            }
+        });
     }
 
     @FXML
     private void viewDetails(MouseEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("PatientDetails.fxml"));
-
-        Parent root = loader.load();
-
-        PatientDetailsController patientDetails = loader.<PatientDetailsController>getController();
-
-        patientDetails.initStage(stage, list.getSelectionModel().getSelectedItem());
-
-
-        Scene scene = new Scene(root);
-
-        stage.setTitle("Patient Details - " + list.getSelectionModel().getSelectedItem().getName() + " " + list.getSelectionModel().getSelectedItem().getSurname());
-        stage.setScene(scene);
-        stage.show();
+        this.<PatientDetailsController>loadScene(Constants.PATIENTS_VIEW, e -> {e.initPatient(patientTable.getSelectionModel().getSelectedItem());});
 
     }
     

@@ -32,10 +32,10 @@
         <Label font="$x1" text="Name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
         <Label font="$x1" text="Surname" GridPane.columnIndex="0" GridPane.rowIndex="2" />
         <Label font="$x1" text="Telephone" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-        <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-        <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <TextField fx:id="dni" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <TextField fx:id="name" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField fx:id="surname" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <TextField fx:id="telephone" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       </children>
       <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
