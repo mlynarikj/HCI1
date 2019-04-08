@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="clinic.patients.AddPersonController">
+  <bottom>
+    <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="600.0" spacing="20.0">
+      <children>
+        <Button fx:id="save" mnemonicParsing="false" onMouseClicked="#save" prefWidth="70.0" text="Save" />
+        <Button fx:id="cancel" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onMouseClicked="#cancel" text="Cancel" />
+      </children>
+      <padding>
+        <Insets right="20.0" />
+      </padding>
+    </HBox>
+  </bottom>
+  <center>
+    <GridPane alignment="CENTER">
+      <children>
+        <Label text="DNI" GridPane.columnIndex="0" GridPane.rowIndex="0">
+          <font>
+            <Font name="System Bold" size="18.0" fx:id="x1" />
+          </font>
+        </Label>
+        <Label font="$x1" text="Name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Label font="$x1" text="Surname" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Label font="$x1" text="Telephone" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextField fx:id="dni" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <TextField fx:id="name" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField fx:id="surname" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <TextField fx:id="telephone" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      </children>
+      <columnConstraints>
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </center>
+  <right>
+    <VBox alignment="CENTER" prefHeight="220.0" prefWidth="144.0">
+      <children>
+        <ImageView fx:id="image" fitHeight="80.0" fitWidth="77.25714401971726" onMouseClicked="#addPhoto" pickOnBounds="true" preserveRatio="true" />
+        <Button mnemonicParsing="false" onMouseClicked="#addPhoto" text="Add Photo" />
+      </children>
+    </VBox>
+  </right>
+  <top>
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <children>
+        <Label contentDisplay="LEFT" text="Patient Form" textFill="BLACK" textOverrun="CENTER_ELLIPSIS">
+          <font>
+            <Font name="System Bold" size="22.0" />
+          </font>
+          <HBox.margin>
+            <Insets />
+          </HBox.margin>
+        </Label>
+      </children>
+    </HBox>
+  </top>
+</BorderPane>
