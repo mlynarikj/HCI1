@@ -18,8 +18,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
@@ -115,8 +113,7 @@ public class AddPersonController implements Initializable {
         clinic.saveDB();
         stage.setTitle(title);
         stage.setScene(scene);
-        stage.show();
-        }
+        stage.show();}
     }
     
     @FXML
