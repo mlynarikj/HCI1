@@ -107,7 +107,22 @@ public class PatientsController implements Initializable {
     }
 
     @FXML
-    private void viewDetails(MouseEvent event) {
+    private void viewDetails(MouseEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PatientDetails.fxml"));
+
+        Parent root = loader.load();
+
+        PatientDetailsController patientDetails = loader.<PatientDetailsController>getController();
+
+        patientDetails.initStage(stage, list.getSelectionModel().getSelectedItem());
+
+        Scene scene = new Scene(root);
+
+        stage.setTitle("Patient Details - " + list.getSelectionModel().getSelectedItem().getName() + " " + list.getSelectionModel().getSelectedItem().getSurname());
+        stage.setScene(scene);
+        stage.show();
+
     }
     
 }

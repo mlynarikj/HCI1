@@ -9,6 +9,7 @@ package clinic;
 import DBAccess.ClinicDBAccess;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -86,12 +88,27 @@ public class AddPersonController implements Initializable {
         stage.setTitle("Add Photo");
         stage.setScene(scene);
         stage.show();
-        
+
     }
-    
+
+
+
     @FXML
     private void save(MouseEvent event)
     {
+
+        if(image == null)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error box");
+            alert.setHeaderText("CHoose now");
+            alert.setContentText("PAtient could not be registrered due to lack of photo");
+            ButtonType buttonTypeCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent())
+                System.out.println("Cancel");        }
+        else
+        {
         Patient patient = new Patient(dni.getText(), name.getText(), surname.getText(), telephone.getText(), image.getImage());
 
         clinic.getPatients().add(patient);
@@ -99,6 +116,7 @@ public class AddPersonController implements Initializable {
         stage.setTitle(title);
         stage.setScene(scene);
         stage.show();
+        }
     }
     
     @FXML
