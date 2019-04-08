@@ -95,4 +95,9 @@ public class AppointmentListPage extends MainWindowController {
         appointmentTable.setItems(appointmentList);
     }
 
+    @Override
+    public void initStage(Stage primaryStage) {
+        super.initStage(primaryStage);
+        stage.setTitle("Appointments");
+    }
 }

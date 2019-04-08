@@ -11,6 +11,7 @@
 <?import javafx.scene.text.*?>
 <?scenebuilder-classpath-element ../../resources?>
 
+<?import jfxtras.scene.control.LocalDatePicker?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="clinic.AddAppointment">
   <bottom>
     <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="600.0" spacing="20.0">
@@ -51,32 +52,10 @@
             </FXCollections>
           </items>
         </ChoiceBox>
-        <ChoiceBox id="room" fx:id="week" maxWidth="1.7976931348623157E308" prefWidth="365.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-          <items>
-            <FXCollections fx:factory="observableArrayList">
-              <String fx:value="Item 1" />
-              <String fx:value="Item 2" />
-              <String fx:value="Item 3" />
-            </FXCollections>
-          </items>
-        </ChoiceBox>
-        <ChoiceBox id="room" fx:id="day" maxWidth="1.7976931348623157E308" prefWidth="365.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-          <items>
-            <FXCollections fx:factory="observableArrayList">
-              <String fx:value="Item 1" />
-              <String fx:value="Item 2" />
-              <String fx:value="Item 3" />
-            </FXCollections>
-          </items>
-        </ChoiceBox>
+        <LocalDatePicker id="room" fx:id="week" maxWidth="1.7976931348623157E308" prefWidth="365.0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
         <ChoiceBox id="room" fx:id="slot" maxWidth="1.7976931348623157E308" prefWidth="365.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-          <items>
-            <FXCollections fx:factory="observableArrayList">
-              <String fx:value="Item 1" />
-              <String fx:value="Item 2" />
-              <String fx:value="Item 3" />
-            </FXCollections>
-          </items>
+
         </ChoiceBox>
       </children>
       <columnConstraints>

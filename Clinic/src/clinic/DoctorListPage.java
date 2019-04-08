@@ -92,5 +92,6 @@ public class DoctorListPage extends MainWindowController {
 
     public void initStage(Stage stage) {
         this.stage = stage;
+        stage.setTitle("Doctors");
     }
 }
