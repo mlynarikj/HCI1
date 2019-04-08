@@ -32,7 +32,7 @@ import model.Patient;
  *
  * @author olemf
  */
-public class PatientsController implements Initializable {
+public class PatientsController extends MainWindowController {
     @FXML
     private Button patients;
     @FXML
@@ -50,17 +50,11 @@ public class PatientsController implements Initializable {
     @FXML
     private Button viewDetails;
 
-    private Stage stage;
     private Scene scene;
     private String title;
     private ObservableList<Patient> obsList = null;
-    private ClinicDBAccess clinic;
 
-    public void initStage(Stage stage) {
-        this.stage = stage;
-        scene = this.stage.getScene();
-        title = this.stage.getTitle();
-    }
+
 
     /**
      * Initializes the controller class.
@@ -75,20 +69,9 @@ public class PatientsController implements Initializable {
         ArrayList<Patient> arrayList = new ArrayList<Patient>();
         obsList = FXCollections.observableArrayList(arrayList);
         list.setItems(obsList);
-        ClinicDBAccess clinic = ClinicDBAccess.getSingletonClinicDBAccess();
     }    
 
-    @FXML
-    private void patients(MouseEvent event) {
-    }
 
-    @FXML
-    private void doctors(MouseEvent event) {
-    }
-
-    @FXML
-    private void appointments(MouseEvent event) {
-    }
 
     @FXML
     private void addPatient(MouseEvent event) throws IOException {
