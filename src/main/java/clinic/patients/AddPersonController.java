@@ -8,7 +8,9 @@ package clinic.patients;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import clinic.Constants;
 import clinic.common.MainWindowController;
@@ -24,6 +26,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import model.Patient;
+import model.Person;
 
 /**
  * FXML Controller class
@@ -98,9 +101,15 @@ public class AddPersonController extends MainWindowController {
         StringBuilder errors = new StringBuilder();
         Patient patient = new Patient();
 
+        List<String> identifiers = clinicDBAccess.getDoctors().stream().map(Person::getIdentifier).collect(Collectors.toList());
+        identifiers.addAll(clinicDBAccess.getPatients().stream().map(Person::getIdentifier).collect(Collectors.toList()));
+
         patient.setIdentifier(dni.getText());
         if (patient.getIdentifier().isEmpty()) {
             errors.append("DNI cannot be empty\n");
+        }
+        if (identifiers.contains(patient.getIdentifier())){
+            errors.append("DNI must be unique\n");
         }
         patient.setName(name.getText());
         if (patient.getName().isEmpty()) {

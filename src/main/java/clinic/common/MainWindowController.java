@@ -53,7 +53,7 @@ public class MainWindowController implements Initializable {
         this.stage = primaryStage;
     }
 
-    public void initClinic(ClinicDBAccess clinicDBAccess){
+    public void initClinic(ClinicDBAccess clinicDBAccess) {
         this.clinicDBAccess = clinicDBAccess;
     }
 
@@ -77,7 +77,7 @@ public class MainWindowController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Parent root;
         try {
-                root = loader.load();
+            root = loader.load();
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid fxml");
@@ -89,7 +89,8 @@ public class MainWindowController implements Initializable {
         controller.initStage(stage);
         controller.initClinic(clinicDBAccess);
         function.accept(controller);
-        Scene scene = new Scene(root);
+
+        Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
         stage.setScene(scene);
         stage.show();
         return controller;

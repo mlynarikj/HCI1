@@ -19,10 +19,13 @@ import jfxtras.scene.control.LocalTimePicker;
 import model.Days;
 import model.Doctor;
 import model.ExaminationRoom;
+import model.Person;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -110,8 +113,14 @@ public class AddDoctor extends MainWindowController {
         Doctor doctor = new Doctor();
         doctor.setExaminationRoom(room.getValue());
         doctor.setIdentifier(dni.getText());
+
+        List<String> identifiers = clinicDBAccess.getDoctors().stream().map(Person::getIdentifier).collect(Collectors.toList());
+        identifiers.addAll(clinicDBAccess.getPatients().stream().map(Person::getIdentifier).collect(Collectors.toList()));
         if (doctor.getIdentifier().isEmpty()) {
             errors.append("DNI cannot be empty\n");
+        }
+        if (identifiers.contains(doctor.getIdentifier())){
+            errors.append("DNI must be unique\n");
         }
         doctor.setName(name.getText());
         if (doctor.getName().isEmpty()) {
@@ -153,7 +162,7 @@ public class AddDoctor extends MainWindowController {
         doctorList.add(doctor);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Doctor created");
-        alert.setContentText("Doctor" + name.getText() + " " + surname.getText() + " created");
+        alert.setContentText("Doctor " + name.getText() + " " + surname.getText() + " created");
         alert.show();
         loadScene(Constants.DOCTORS_LIST);
     }
