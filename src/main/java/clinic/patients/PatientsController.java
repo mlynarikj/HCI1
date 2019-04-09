@@ -69,6 +69,9 @@ public class PatientsController extends MainWindowController {
         viewDetails.disableProperty().bind(
                 Bindings.equal(-1,
                         patientTable.getSelectionModel().selectedIndexProperty()));
+        deletePatient.disableProperty().bind(
+                Bindings.equal(-1,
+                        patientTable.getSelectionModel().selectedIndexProperty()));
 
         name.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
         surname.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getSurname()));
