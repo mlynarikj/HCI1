@@ -60,10 +60,7 @@ public class AddPersonController extends MainWindowController {
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
 
-    }
 
     @Override
     public void initStage(Stage primaryStage) {

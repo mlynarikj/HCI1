@@ -65,7 +65,7 @@ public class PatientsController extends MainWindowController {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-
+        super.initialize(url, rb);
         viewDetails.disableProperty().bind(
                 Bindings.equal(-1,
                         patientTable.getSelectionModel().selectedIndexProperty()));

@@ -38,6 +38,8 @@ public class MainWindowController implements Initializable {
     @FXML
     private Button appointments;
 
+    protected ResourceBundle bundle;
+
     protected Stage stage;
 
     protected ClinicDBAccess clinicDBAccess;
@@ -47,6 +49,7 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        bundle = rb;
     }
 
     public void initStage(Stage primaryStage) {
@@ -74,7 +77,7 @@ public class MainWindowController implements Initializable {
 
 
     protected <T extends MainWindowController> T loadScene(String fxml, Consumer<T> function) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml), bundle);
         Parent root;
         try {
             root = loader.load();
