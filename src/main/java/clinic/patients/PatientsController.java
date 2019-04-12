@@ -88,7 +88,7 @@ public class PatientsController extends MainWindowController {
     @Override
     public void initStage(Stage primaryStage) {
         super.initStage(primaryStage);
-        primaryStage.setTitle("Patients");
+        primaryStage.setTitle(bundle.getString("patientController.title"));
     }
 
 
@@ -114,8 +114,8 @@ public class PatientsController extends MainWindowController {
 
         Patient delete = patientTable.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Deleting patient  " + delete.getSurname());
-        alert.setContentText("You are about to delete patient: " + delete.getSurname());
+        alert.setTitle(bundle.getString("patientController.delete") + delete.getSurname());
+        alert.setContentText(bundle.getString("patientController.confirmation") + delete.getSurname());
         alert.showAndWait().ifPresent(p -> {
             if (p == ButtonType.OK) {
                 obsList.remove(delete);

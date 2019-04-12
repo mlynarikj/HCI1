@@ -23,8 +23,8 @@
             <Insets top="10.0" fx:id="x1" />
           </VBox.margin>
         </Button>
-        <Button fx:id="deletePatient" mnemonicParsing="false" onMouseClicked="#deletePatient" text="Delete Patient" VBox.margin="$x1" />
-        <Button fx:id="viewDetails" mnemonicParsing="false" onMouseClicked="#viewDetails" text="View Details" VBox.margin="$x1" />
+        <Button fx:id="deletePatient" mnemonicParsing="false" onMouseClicked="#deletePatient" text="%patient.delete" VBox.margin="$x1" />
+        <Button fx:id="viewDetails" mnemonicParsing="false" onMouseClicked="#viewDetails" text="%patient.viewDetails" VBox.margin="$x1" />
       </children>
       <BorderPane.margin>
         <Insets top="20.0" />
@@ -34,9 +34,9 @@
   <top>
     <ToolBar>
       <items>
-        <Button fx:id="patients" mnemonicParsing="false" onMouseClicked="#patients" text="Patients" />
-        <Button fx:id="doctors" mnemonicParsing="false" onMouseClicked="#doctors" text="Doctors" />
-        <Button fx:id="appointments" mnemonicParsing="false" onMouseClicked="#appointments" text="Appointments" />
+        <Button fx:id="patients" mnemonicParsing="false" onMouseClicked="#patients" text="%patient" />
+        <Button fx:id="doctors" mnemonicParsing="false" onMouseClicked="#doctors" text="%doctor" />
+        <Button fx:id="appointments" mnemonicParsing="false" onMouseClicked="#appointments" text="%appointment" />
       </items>
     </ToolBar>
   </top>
