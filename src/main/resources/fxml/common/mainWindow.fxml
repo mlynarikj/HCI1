@@ -6,7 +6,7 @@
 <BorderPane prefHeight="700" prefWidth="700" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
             fx:controller="clinic.common.MainWindowController">
     <center>
-        <Label text="Welcome to Primary Care Clinic">
+        <Label text="%clinic.intro">
             <font>
                 <Font name="System Bold" size="20.0"/>
             </font>

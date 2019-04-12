@@ -54,7 +54,7 @@ public class PatientDetailsController extends MainWindowController {
     @Override
     public void initStage(Stage primaryStage) {
         super.initStage(primaryStage);
-        primaryStage.setTitle("Patient details");
+        primaryStage.setTitle(bundle.getString("patientDetails.title"));
     }
 
     //    public void initStage(Stage stage, Patient patient)

@@ -65,7 +65,7 @@ public class AddPersonController extends MainWindowController {
     @Override
     public void initStage(Stage primaryStage) {
         super.initStage(primaryStage);
-        primaryStage.setTitle("Add Patient");
+        primaryStage.setTitle(bundle.getString("addPatient.title"));
     }
 
 
@@ -103,36 +103,36 @@ public class AddPersonController extends MainWindowController {
 
         patient.setIdentifier(dni.getText());
         if (patient.getIdentifier().isEmpty()) {
-            errors.append("DNI cannot be empty\n");
+            errors.append(bundle.getString("addPatient.alertID"));
         }
         if (identifiers.contains(patient.getIdentifier())){
-            errors.append("DNI must be unique\n");
+            errors.append(bundle.getString("addPatient.alertNotUnique"));
         }
         patient.setName(name.getText());
         if (patient.getName().isEmpty()) {
-            errors.append("Name cannot be empty\n");
+            errors.append(bundle.getString("addPatient.alertName"));
         }
         patient.setSurname(surname.getText());
         if (patient.getSurname().isEmpty()) {
-            errors.append("Surname cannot be empty\n");
+            errors.append(bundle.getString("addPatient.alertSurname"));
         }
         patient.setTelephon(telephone.getText());
         if (patient.getTelephon().isEmpty()) {
-            errors.append("Telephone cannot be empty\n");
+            errors.append(bundle.getString("addPatient.alertTelephone"));
         }
         patient.setPhoto(image.getImage());
 
         if (errors.length() != 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Invalid patient");
+            alert.setTitle(bundle.getString("addPatient.alertInvalid"));
             alert.setContentText(errors.toString());
             alert.show();
             return;
         }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Patient created");
-        alert.setContentText("Patient " + name.getText() + " " + surname.getText() + " created");
+        alert.setTitle(bundle.getString("addPatient.alertCreated"));
+        alert.setContentText(bundle.getString("addPatient.alertContent1") + name.getText() + " " + surname.getText() + bundle.getString("addPatient.alertContent2"));
         alert.show();
 
         clinicDBAccess.getPatients().add(patient);

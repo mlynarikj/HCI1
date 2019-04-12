@@ -13,7 +13,7 @@
   <bottom>
     <HBox alignment="CENTER_RIGHT" minHeight="82.0" prefHeight="102.0" prefWidth="588.0" BorderPane.alignment="CENTER">
       <children>
-        <Button fx:id="cancel" mnemonicParsing="false" onMouseClicked="#cancel" text="Cancel">
+        <Button fx:id="cancel" mnemonicParsing="false" onMouseClicked="#cancel" text="%patientDetails.cancel">
           <HBox.margin>
             <Insets right="40.0" />
           </HBox.margin>
@@ -24,14 +24,14 @@
   <center>
     <GridPane alignment="CENTER" prefHeight="132.0" prefWidth="460.0" BorderPane.alignment="CENTER">
       <children>
-        <Label text="DNI" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <Label text="%patientDetails.id" GridPane.columnIndex="0" GridPane.rowIndex="0">
           <font>
             <Font name="System Bold" size="18.0" fx:id="x1" />
           </font>
         </Label>
-        <Label font="$x1" text="Surname" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-        <Label font="$x1" text="Name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-        <Label font="$x1" prefWidth="-1.0" text="Telephone" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Label font="$x1" text="%patientDetails.surname" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Label font="$x1" text="%patientDetails.name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Label font="$x1" prefWidth="-1.0" text="%patientDetails.telephone" GridPane.columnIndex="0" GridPane.rowIndex="3" />
         <Label fx:id="dni" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="0" />
         <Label fx:id="name" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <Label fx:id="surname" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
