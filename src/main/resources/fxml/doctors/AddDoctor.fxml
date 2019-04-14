@@ -25,8 +25,8 @@
       <padding>
         <Insets right="20.0" />
       </padding>
-      <Button mnemonicParsing="false" onMouseClicked="#save" text="Save" />
-      <Button mnemonicParsing="false" onMouseClicked="#cancel" text="Cancel" />
+      <Button mnemonicParsing="false" onMouseClicked="#save" text="%save" />
+      <Button mnemonicParsing="false" onMouseClicked="#cancel" text="%cancel" />
     </HBox>
   </bottom>
   <center>
@@ -44,19 +44,19 @@
         <RowConstraints vgrow="SOMETIMES" />
         <RowConstraints vgrow="SOMETIMES" />
       </rowConstraints>
-      <Label alignment="CENTER_RIGHT" text="DNI" GridPane.columnIndex="0" GridPane.rowIndex="0">
+      <Label alignment="CENTER_RIGHT" text="%id" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <font>
           <Font name="System Bold Italic" size="18.0" fx:id="x1" />
         </font>
       </Label>
       <TextField fx:id="dni" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
       <TextField fx:id="name" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Label alignment="CENTER_RIGHT" font="$x1" text="Name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-      <Label alignment="CENTER_RIGHT" font="$x1" text="Surname" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-      <Label alignment="CENTER_RIGHT" font="$x1" text="Telephone" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-      <Label alignment="CENTER_RIGHT" font="$x1" text="Examination room" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-      <Label alignment="CENTER_RIGHT" font="$x1" text="Working hours" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-      <Label alignment="CENTER_RIGHT" font="$x1" text="Working days" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+      <Label alignment="CENTER_RIGHT" font="$x1" text="%name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+      <Label alignment="CENTER_RIGHT" font="$x1" text="%surname" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+      <Label alignment="CENTER_RIGHT" font="$x1" text="%telephone" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+      <Label alignment="CENTER_RIGHT" font="$x1" text="%examinationRoom" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+      <Label alignment="CENTER_RIGHT" font="$x1" text="%workingHours" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+      <Label alignment="CENTER_RIGHT" font="$x1" text="%workingDays" GridPane.columnIndex="0" GridPane.rowIndex="6" />
       <ChoiceBox fx:id="room" maxWidth="1.7976931348623157E308" prefWidth="365.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
         <items>
           <FXCollections fx:factory="observableArrayList">
@@ -71,13 +71,13 @@
       <HBox prefHeight="24.0" prefWidth="365.0" spacing="30.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
         <VBox alignment="TOP_CENTER">
           <children>
-            <Label text="From:" />
+            <Label text="%from" />
             <LocalTimePicker fx:id="from" prefWidth="200.0" />
           </children>
         </VBox>
         <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0">
           <children>
-            <Label text="To:" />
+            <Label text="%to" />
             <LocalTimePicker fx:id="to" prefWidth="200.0" />
           </children>
         </VBox>
@@ -98,13 +98,13 @@
           <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
 
-        <CheckBox fx:id="monday" mnemonicParsing="false" prefWidth="106.0" text="Monday" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <CheckBox fx:id="friday" mnemonicParsing="false" text="Friday" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-        <CheckBox fx:id="tuesday" mnemonicParsing="false" prefWidth="106.0" text="Tuesday" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-        <CheckBox fx:id="saturday" mnemonicParsing="false" text="Saturday" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <CheckBox fx:id="wednesday" mnemonicParsing="false" text="Wednesday" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-        <CheckBox fx:id="sunday" mnemonicParsing="false" text="Sunday" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <CheckBox fx:id="thursday" mnemonicParsing="false" text="Thursday" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <CheckBox fx:id="monday" mnemonicParsing="false" prefWidth="106.0" text="%monday" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <CheckBox fx:id="friday" mnemonicParsing="false" text="%friday" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <CheckBox fx:id="tuesday" mnemonicParsing="false" prefWidth="106.0" text="%tuesday" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <CheckBox fx:id="saturday" mnemonicParsing="false" text="%saturday" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <CheckBox fx:id="wednesday" mnemonicParsing="false" text="%wednesday" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <CheckBox fx:id="sunday" mnemonicParsing="false" text="%sunday" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <CheckBox fx:id="thursday" mnemonicParsing="false" text="%thursday" GridPane.columnIndex="0" GridPane.rowIndex="3" />
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
@@ -124,12 +124,12 @@
   <right>
     <VBox alignment="CENTER" prefWidth="144.0">
       <ImageView fx:id="imageView" fitHeight="80.0" fitWidth="80" pickOnBounds="true" preserveRatio="true" />
-      <Button onMouseClicked="#addPhoto" text="Add photo" />
+      <Button onMouseClicked="#addPhoto" text="%addPhoto" />
     </VBox>
   </right>
   <top>
     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-      <Label text="Doctor Form" textFill="BLACK" textOverrun="CENTER_ELLIPSIS">
+      <Label text="%doctor.form" textFill="BLACK" textOverrun="CENTER_ELLIPSIS">
         <font>
           <Font name="System Bold" size="22.0" />
         </font>

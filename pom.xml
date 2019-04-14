@@ -32,5 +32,38 @@
             <artifactId>jfxtras-controls</artifactId>
             <version>8.0-r6</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.kordamp.bootstrapfx</groupId>
+            <artifactId>bootstrapfx-core</artifactId>
+            <version>0.2.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aquafx-project</groupId>
+            <artifactId>aquafx</artifactId>
+            <version>0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guigarage</groupId>
+            <artifactId>flatter</artifactId>
+            <version>0.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jfxtras</groupId>
+            <artifactId>jmetro</artifactId>
+            <version>4.2</version>
+        </dependency>
     </dependencies>
+
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>jcenter</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
 </project>

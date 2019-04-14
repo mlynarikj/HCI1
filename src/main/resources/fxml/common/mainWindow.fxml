@@ -15,10 +15,10 @@
     <top>
         <ToolBar>
             <items>
-                <Button fx:id="patients" mnemonicParsing="false" onMouseClicked="#patients" text="Patients"/>
-                <Button id="doctor" fx:id="doctors" mnemonicParsing="false" onMouseClicked="#doctors" text="Doctors"/>
+                <Button fx:id="patients" mnemonicParsing="false" onMouseClicked="#patients" text="%patients"/>
+                <Button id="doctor" fx:id="doctors" mnemonicParsing="false" onMouseClicked="#doctors" text="%doctors"/>
                 <Button fx:id="appointments" mnemonicParsing="false" onMouseClicked="#appointments"
-                        text="Appointments"/>
+                        text="%appointments"/>
             </items>
         </ToolBar>
     </top>

@@ -18,31 +18,31 @@
             <padding>
                 <Insets right="20.0"/>
             </padding>
-            <Button mnemonicParsing="false" onMouseClicked="#cancel" text="Back"/>
+            <Button mnemonicParsing="false" onMouseClicked="#cancel" text="%cancel"/>
         </HBox>
     </bottom>
     <center>
         <GridPane prefHeight="329.0" prefWidth="570.0" vgap="10.0">
             <children>
-                <Label alignment="CENTER_RIGHT" text="DNI" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label alignment="CENTER_RIGHT" text="%id" GridPane.columnIndex="0" GridPane.rowIndex="0">
                     <font>
                         <Font name="System Bold Italic" size="18.0" fx:id="x1"/>
                     </font>
                 </Label>
-                <Label alignment="CENTER_RIGHT" font="$x1" text="Name" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                <Label alignment="CENTER_RIGHT" font="$x1" text="Surname" GridPane.columnIndex="0"
+                <Label alignment="CENTER_RIGHT" font="$x1" text="%name" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label alignment="CENTER_RIGHT" font="$x1" text="%surname" GridPane.columnIndex="0"
                        GridPane.rowIndex="2"/>
-                <Label alignment="CENTER_RIGHT" font="$x1" text="Telephone" GridPane.columnIndex="0"
+                <Label alignment="CENTER_RIGHT" font="$x1" text="%telephone" GridPane.columnIndex="0"
                        GridPane.rowIndex="3"/>
-                <Label alignment="CENTER_RIGHT" font="$x1" text="Examination room" GridPane.columnIndex="0"
+                <Label alignment="CENTER_RIGHT" font="$x1" text="%examinationRoom" GridPane.columnIndex="0"
                        GridPane.rowIndex="4"/>
-                <Label alignment="CENTER_RIGHT" font="$x1" text="Working hours" GridPane.columnIndex="0"
+                <Label alignment="CENTER_RIGHT" font="$x1" text="%workingHours" GridPane.columnIndex="0"
                        GridPane.rowIndex="5"/>
-                <Label alignment="CENTER_RIGHT" font="$x1" text="Working days" GridPane.columnIndex="0"
+                <Label alignment="CENTER_RIGHT" font="$x1" text="%workingDays" GridPane.columnIndex="0"
                        GridPane.rowIndex="6"/>
                 <HBox prefHeight="24.0" prefWidth="365.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                    <TextField fx:id="from" editable="false" prefWidth="200.0" promptText="From" text="8:00"/>
-                    <TextField fx:id="to" editable="false" prefWidth="200.0" promptText="To" text="16:00"/>
+                    <TextField fx:id="from" editable="false" prefWidth="200.0" promptText="%from" text="8:00"/>
+                    <TextField fx:id="to" editable="false" prefWidth="200.0" promptText="%to" text="16:00"/>
                 </HBox>
                 <VBox prefHeight="120.0" prefWidth="345.0" spacing="5.0"
                       style="-fx-border-width: 1;&#10;-fx-border-color: gray;&#10;-fx-border-radius: 5;&#10;"
@@ -52,25 +52,25 @@
                     </padding>
                     <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0">
                         <CheckBox fx:id="monday" disable="true" mnemonicParsing="false" prefWidth="102.0"
-                                  style="-fx-opacity: 1;" text="Monday"/>
+                                  style="-fx-opacity: 1;" text="%monday"/>
                         <CheckBox fx:id="friday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1;"
-                                  text="Friday"/>
+                                  text="%friday"/>
                     </HBox>
                     <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0">
                         <CheckBox fx:id="tuesday" disable="true" mnemonicParsing="false" prefWidth="102.0"
-                                  style="-fx-opacity: 1" text="Tuesday"/>
+                                  style="-fx-opacity: 1" text="%tuesday"/>
                         <CheckBox fx:id="saturday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1"
-                                  text="Saturday"/>
+                                  text="%saturday"/>
                     </HBox>
                     <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0">
                         <CheckBox fx:id="wednesday" disable="true" mnemonicParsing="false" prefWidth="102.0"
-                                  style="-fx-opacity: 1" text="Wednesday"/>
+                                  style="-fx-opacity: 1" text="%wednesday"/>
                         <CheckBox fx:id="sunday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1"
-                                  text="Sunday"/>
+                                  text="%sunday"/>
                     </HBox>
                     <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0">
                         <CheckBox fx:id="thursday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1"
-                                  text="Thursday"/>
+                                  text="%thursday"/>
                     </HBox>
                 </VBox>
                 <Label fx:id="dni" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
@@ -81,11 +81,11 @@
                 <TableView fx:id="appointmentTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
                            GridPane.rowIndex="7">
                     <columns>
-                        <TableColumn text="Patient" fx:id="patient"/>
-                        <TableColumn text="Date and Time" fx:id="dateTime"/>
+                        <TableColumn text="%patient" fx:id="patient"/>
+                        <TableColumn text="%dateAndTime" fx:id="dateTime"/>
                     </columns>
                 </TableView>
-                <Label alignment="CENTER_RIGHT" font="$x1" text="Appointments" GridPane.columnIndex="0"
+                <Label alignment="CENTER_RIGHT" font="$x1" text="%appointments" GridPane.columnIndex="0"
                        GridPane.rowIndex="7"/>
             </children>
             <columnConstraints>
@@ -119,7 +119,7 @@
     </right>
     <top>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-            <Label text="Doctor Details" textFill="BLACK" textOverrun="CENTER_ELLIPSIS">
+            <Label text="%doctor.detail" textFill="BLACK" textOverrun="CENTER_ELLIPSIS">
                 <font>
                     <Font name="System Bold" size="22.0"/>
                 </font>

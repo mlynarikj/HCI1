@@ -52,7 +52,13 @@ public class Clinic extends Application {
 
         main.initStage(primaryStage);
         main.initClinic(ClinicDBAccess.getSingletonClinicDBAccess());
-
+        primaryStage.setOnCloseRequest(event ->{
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+            alert1.setTitle(bundle.getString("savingDB"));
+            alert1.show();
+            ClinicDBAccess.getSingletonClinicDBAccess().saveDB();
+            alert1.close();
+        });
         Scene scene = new Scene(root);
         //Application.setUserAgentStylesheet(Application.CASPIAN);
         primaryStage.setTitle("Main Window");

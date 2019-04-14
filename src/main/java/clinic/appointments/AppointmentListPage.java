@@ -82,15 +82,15 @@ public class AppointmentListPage extends MainWindowController {
         if (delete.getAppointmentDateTime().isBefore(LocalDateTime.now())) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Unable to delete");
-            alert.setContentText("Cannot delete an appointment in the past");
+            alert.setTitle(bundle.getString("alerts.FailedDelete"));
+            alert.setContentText(bundle.getString("alerts.FailedDelete.appointment"));
             alert.show();
             return;
         }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Deleting an appointment");
-        alert.setContentText("You are about to delete an appointment for doctor " + delete.getDoctor().getSurname() + " and patient " + delete.getPatient().getSurname());
+        alert.setTitle(bundle.getString("delete"));
+        alert.setContentText(bundle.getString("alerts.aboutToDelete.appointment1") + delete.getDoctor().getSurname() + bundle.getString("alerts.aboutToDelete.appointment2") + delete.getPatient().getSurname());
         alert.showAndWait().ifPresent(p -> {
             if (p == ButtonType.OK) {
                 appointmentList.remove(delete);
@@ -108,6 +108,6 @@ public class AppointmentListPage extends MainWindowController {
     @Override
     public void initStage(Stage primaryStage) {
         super.initStage(primaryStage);
-        stage.setTitle("Appointments");
+        stage.setTitle(bundle.getString("appointments"));
     }
 }

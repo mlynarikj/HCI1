@@ -25,17 +25,9 @@ public class DoctorListPage extends MainWindowController {
     @FXML
     private TableColumn<Doctor, String> surname;
     @FXML
-    private Button add;
-    @FXML
     private Button view;
     @FXML
     private Button delete;
-    @FXML
-    private Button patients;
-    @FXML
-    private Button doctors;
-    @FXML
-    private Button appointments;
 
     private ObservableList<Doctor> doctorList;
 
@@ -63,7 +55,7 @@ public class DoctorListPage extends MainWindowController {
     }
 
     @FXML
-    private void add(MouseEvent mouseEvent) throws IOException {
+    private void add(MouseEvent mouseEvent) {
         loadScene(Constants.DOCTORS_NEW);
     }
 
@@ -80,14 +72,14 @@ public class DoctorListPage extends MainWindowController {
         if (delete == null) return;
         if (clinicDBAccess.hasAppointments(delete)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Unable to delete");
-            alert.setContentText("Cannot delete a doctor with an appointment");
+            alert.setTitle(bundle.getString("alerts.FailedDelete"));
+            alert.setContentText(bundle.getString("alerts.FailedDelete.doctor"));
             alert.show();
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Deleting doctor " + delete.getSurname());
-        alert.setContentText("You are about to delete doctor: " + delete.getSurname());
+        alert.setTitle(bundle.getString("delete")+" " + delete.getSurname());
+        alert.setContentText(bundle.getString("alerts.aboutToDelete.doctor") + delete.getSurname());
         alert.showAndWait().ifPresent(p -> {
             if (p == ButtonType.OK) {
                 doctorList.remove(delete);
@@ -99,6 +91,6 @@ public class DoctorListPage extends MainWindowController {
 
     public void initStage(Stage stage) {
         this.stage = stage;
-        stage.setTitle("Doctors");
+        stage.setTitle(bundle.getString("doctors"));
     }
 }

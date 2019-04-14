@@ -6,20 +6,14 @@
 
 package clinic.patients;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 import clinic.Constants;
 import clinic.common.MainWindowController;
 import clinic.common.PhotosController;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -83,16 +77,6 @@ public class AddPersonController extends MainWindowController {
     private void save(MouseEvent event)
     {
 
-//        if(image == null)
-//        {
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setTitle("Error box");
-//            alert.setHeaderText("CHoose now");
-//            alert.setContentText("PAtient could not be registrered due to lack of photo");
-//            ButtonType buttonTypeCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
-//            Optional<ButtonType> result = alert.showAndWait();
-//            if (result.isPresent())
-//                System.out.println("Cancel");        }
 
 
         StringBuilder errors = new StringBuilder();
@@ -103,36 +87,36 @@ public class AddPersonController extends MainWindowController {
 
         patient.setIdentifier(dni.getText());
         if (patient.getIdentifier().isEmpty()) {
-            errors.append(bundle.getString("addPatient.alertID"));
+            errors.append(bundle.getString("alerts.emptyID"));
         }
         if (identifiers.contains(patient.getIdentifier())){
-            errors.append(bundle.getString("addPatient.alertNotUnique"));
+            errors.append(bundle.getString("alerts.notUniqueId"));
         }
         patient.setName(name.getText());
         if (patient.getName().isEmpty()) {
-            errors.append(bundle.getString("addPatient.alertName"));
+            errors.append(bundle.getString("alerts.emptyName"));
         }
         patient.setSurname(surname.getText());
         if (patient.getSurname().isEmpty()) {
-            errors.append(bundle.getString("addPatient.alertSurname"));
+            errors.append(bundle.getString("alerts.emptySurname"));
         }
         patient.setTelephon(telephone.getText());
         if (patient.getTelephon().isEmpty()) {
-            errors.append(bundle.getString("addPatient.alertTelephone"));
+            errors.append(bundle.getString("alerts.emptyTelephone"));
         }
         patient.setPhoto(image.getImage());
 
         if (errors.length() != 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle(bundle.getString("addPatient.alertInvalid"));
+            alert.setTitle(bundle.getString("alerts.patient.invalid"));
             alert.setContentText(errors.toString());
             alert.show();
             return;
         }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(bundle.getString("addPatient.alertCreated"));
-        alert.setContentText(bundle.getString("addPatient.alertContent1") + name.getText() + " " + surname.getText() + bundle.getString("addPatient.alertContent2"));
+        alert.setTitle(bundle.getString("alerts.patient.created"));
+        alert.setContentText(bundle.getString("patient")+" " + name.getText() + " " + surname.getText() + bundle.getString("created"));
         alert.show();
 
         clinicDBAccess.getPatients().add(patient);

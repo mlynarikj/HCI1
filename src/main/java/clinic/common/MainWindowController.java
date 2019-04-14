@@ -23,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import jfxtras.styles.jmetro8.JMetro;
 
 /**
  * FXML Controller class
@@ -30,13 +31,6 @@ import javafx.stage.Stage;
  * @author olemf
  */
 public class MainWindowController implements Initializable {
-
-    @FXML
-    private Button doctors;
-    @FXML
-    private Button patients;
-    @FXML
-    private Button appointments;
 
     protected ResourceBundle bundle;
 
@@ -83,17 +77,19 @@ public class MainWindowController implements Initializable {
             root = loader.load();
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Invalid fxml");
+            alert.setTitle(bundle.getString("alerts.invalidFxml"));
             alert.setContentText(e.getMessage());
             alert.show();
             return null;
         }
         T controller = loader.getController();
         controller.initStage(stage);
-        controller.initClinic(clinicDBAccess);
+        controller.initClinic(ClinicDBAccess.getSingletonClinicDBAccess());
         function.accept(controller);
 
         Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
+//        new JMetro(JMetro.Style.LIGHT).applyTheme(scene);
+
         stage.setScene(scene);
         stage.show();
         return controller;

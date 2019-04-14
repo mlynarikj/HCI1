@@ -58,7 +58,6 @@ public class PatientsController extends MainWindowController {
     private ObservableList<Patient> obsList = null;
 
 
-
     /**
      * Initializes the controller class.
      */
@@ -88,9 +87,8 @@ public class PatientsController extends MainWindowController {
     @Override
     public void initStage(Stage primaryStage) {
         super.initStage(primaryStage);
-        primaryStage.setTitle(bundle.getString("patientController.title"));
+        primaryStage.setTitle(bundle.getString("patient"));
     }
-
 
 
     @FXML
@@ -113,9 +111,16 @@ public class PatientsController extends MainWindowController {
         //clinicDBAccess.getPatients().remove(patientTable.getSelectionModel().getSelectedItem());
 
         Patient delete = patientTable.getSelectionModel().getSelectedItem();
+        if (clinicDBAccess.hasAppointments(delete)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle(bundle.getString("alerts.FailedDelete"));
+            alert.setContentText(bundle.getString("alerts.FailedDelete.patient"));
+            alert.show();
+            return;
+        }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle(bundle.getString("patientController.delete") + delete.getSurname());
-        alert.setContentText(bundle.getString("patientController.confirmation") + delete.getSurname());
+        alert.setTitle(bundle.getString("delete") + " " + delete.getSurname());
+        alert.setContentText(bundle.getString("alerts.aboutToDelete.patient") + delete.getSurname());
         alert.showAndWait().ifPresent(p -> {
             if (p == ButtonType.OK) {
                 obsList.remove(delete);
@@ -126,8 +131,10 @@ public class PatientsController extends MainWindowController {
     @FXML
     private void viewDetails(MouseEvent event) throws IOException {
 
-        this.<PatientDetailsController>loadScene(Constants.PATIENTS_VIEW, e -> {e.initPatient(patientTable.getSelectionModel().getSelectedItem());});
+        this.<PatientDetailsController>loadScene(Constants.PATIENTS_VIEW, e -> {
+            e.initPatient(patientTable.getSelectionModel().getSelectedItem());
+        });
 
     }
-    
+
 }

@@ -91,10 +91,15 @@ public class PhotosController extends MainWindowController {
     public void save(MouseEvent mouseEvent) {
 
         image.setImage(list.getSelectionModel().getSelectedItem().getImage());
-        Scene curr = stage.getScene();
+        changeBack();
+    }
+
+    private void changeBack() {
+        double h = stage.getHeight();
+        double w = stage.getWidth();
         stage.setScene(previous);
-        stage.setWidth(curr.getWidth());
-        stage.setHeight(curr.getHeight());
+        stage.setWidth(w);
+        stage.setHeight(h);
         stage.show();
     }
 
@@ -107,11 +112,7 @@ public class PhotosController extends MainWindowController {
     }
 
     public void cancel(MouseEvent mouseEvent) {
-        Scene curr = stage.getScene();
-        stage.setScene(previous);
-        stage.setWidth(curr.getWidth());
-        stage.setHeight(curr.getHeight());
-        stage.show();
+        changeBack();
     }
 
 

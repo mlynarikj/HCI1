@@ -13,12 +13,12 @@
     <bottom>
         <HBox alignment="CENTER_RIGHT" padding="$x1" prefHeight="78.0" prefWidth="443.0">
             <children>
-                <Button fx:id="save" mnemonicParsing="false" onMouseClicked="#save" text="Save">
+                <Button fx:id="save" mnemonicParsing="false" onMouseClicked="#save" text="%save">
                     <HBox.margin>
                         <Insets right="20.0" fx:id="x1"/>
                     </HBox.margin>
                 </Button>
-                <Button fx:id="cancel" mnemonicParsing="false" onMouseClicked="#cancel" text="Cancel"/>
+                <Button fx:id="cancel" mnemonicParsing="false" onMouseClicked="#cancel" text="%cancel"/>
             </children>
             <BorderPane.margin>
                 <Insets fx:id="x2"/>
@@ -35,13 +35,13 @@
                 <fx:define>
                     <ToggleGroup fx:id="gender"/>
                 </fx:define>
-                <RadioButton fx:id="male" mnemonicParsing="false" toggleGroup="$gender" text="Male"
+                <RadioButton fx:id="male" mnemonicParsing="false" toggleGroup="$gender" text="%male"
                              textAlignment="LEFT">
                     <VBox.margin>
                         <Insets right="16.0"/>
                     </VBox.margin>
                 </RadioButton>
-                <RadioButton fx:id="female" toggleGroup="$gender" mnemonicParsing="false" text="Female"
+                <RadioButton fx:id="female" toggleGroup="$gender" mnemonicParsing="false" text="%female"
                              textAlignment="LEFT">
                     <VBox.margin>
                         <Insets top="20.0"/>
@@ -53,7 +53,7 @@
     <top>
         <HBox alignment="CENTER" prefHeight="63.0" prefWidth="443.0">
             <children>
-                <Label text="Add photo">
+                <Label text="%addPhoto">
                     <font>
                         <Font name="System Bold" size="20.0"/>
                     </font>

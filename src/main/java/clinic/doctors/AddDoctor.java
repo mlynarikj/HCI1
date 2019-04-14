@@ -65,8 +65,6 @@ public class AddDoctor extends MainWindowController {
 
     private ObservableList<Doctor> doctorList;
 
-    private Image photograph;
-
 
     public void addPhoto(MouseEvent mouseEvent) {
         this.<PhotosController>loadScene(Constants.PHOTOS,
@@ -117,29 +115,29 @@ public class AddDoctor extends MainWindowController {
         List<String> identifiers = clinicDBAccess.getDoctors().stream().map(Person::getIdentifier).collect(Collectors.toList());
         identifiers.addAll(clinicDBAccess.getPatients().stream().map(Person::getIdentifier).collect(Collectors.toList()));
         if (doctor.getIdentifier().isEmpty()) {
-            errors.append("DNI cannot be empty\n");
+            errors.append(bundle.getString("alerts.emptyID"));
         }
-        if (identifiers.contains(doctor.getIdentifier())){
-            errors.append("DNI must be unique\n");
+        if (identifiers.contains(doctor.getIdentifier())) {
+            errors.append(bundle.getString("alerts.notUniqueId"));
         }
         doctor.setName(name.getText());
         if (doctor.getName().isEmpty()) {
-            errors.append("Name cannot be empty\n");
+            errors.append(bundle.getString("alerts.emptyName"));
         }
         doctor.setSurname(surname.getText());
         if (doctor.getSurname().isEmpty()) {
-            errors.append("Surname cannot be empty\n");
+            errors.append(bundle.getString("alerts.emptySurname"));
         }
         doctor.setTelephon(telephone.getText());
         if (doctor.getTelephon().isEmpty()) {
-            errors.append("Telephone cannot be empty\n");
+            errors.append(bundle.getString("alerts.emptyTelephone"));
         }
         doctor.setVisitStartTime(from.getLocalTime());
         doctor.setVisitEndTime(to.getLocalTime());
 
         if (doctor.getVisitStartTime().isAfter(doctor.getVisitEndTime())
                 || (from.getLocalTime().getHour() == to.getLocalTime().getHour() && from.getLocalTime().getMinute() == to.getLocalTime().getMinute())) {
-            errors.append("The doctor cannot travel in time and end the visit before starting it.\n");
+            errors.append(bundle.getString("alerts.doctor.wrongTime"));
         }
         ArrayList<Days> days = new ArrayList<>();
         for (int i = 0; i < checkBoxes.size(); i++) {
@@ -148,21 +146,21 @@ public class AddDoctor extends MainWindowController {
             }
         }
         if (days.size() == 0) {
-            errors.append("Doctor has to visit at least one day of the week!\n");
+            errors.append(bundle.getString("alerts.doctor.wrongDays"));
         }
         doctor.setVisitDays(days);
         doctor.setPhoto(imageView.getImage());
         if (errors.length() != 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Invalid doctor");
+            alert.setTitle(bundle.getString("alerts.doctor.invalid"));
             alert.setContentText(errors.toString());
             alert.show();
             return;
         }
         doctorList.add(doctor);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Doctor created");
-        alert.setContentText("Doctor " + name.getText() + " " + surname.getText() + " created");
+        alert.setTitle(bundle.getString("alerts.doctor.created"));
+        alert.setContentText(bundle.getString("doctor") + " " + name.getText() + " " + surname.getText() + " created");
         alert.show();
         loadScene(Constants.DOCTORS_LIST);
     }

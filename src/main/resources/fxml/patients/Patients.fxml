@@ -10,33 +10,28 @@
   <center>
     <TableView id="tableView" fx:id="patientTable" prefHeight="221.99990000000253" prefWidth="187.0">
       <columns>
-        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="100.0" text="Name" fx:id="name" />
-        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="87.0" text="Surname" fx:id="surname" />
+        <TableColumn prefWidth="100.0" text="Name" fx:id="name" />
+        <TableColumn prefWidth="87.0" text="Surname" fx:id="surname" />
       </columns>
     </TableView>
   </center>
   <right>
-    <VBox prefHeight="201.0" prefWidth="134.0">
-      <children>
-        <Button fx:id="addPatient" mnemonicParsing="false" onMouseClicked="#addPatient" prefWidth="-1.0" text="%patient.add">
-          <VBox.margin>
-            <Insets top="10.0" fx:id="x1" />
-          </VBox.margin>
-        </Button>
-        <Button fx:id="deletePatient" mnemonicParsing="false" onMouseClicked="#deletePatient" text="%patient.delete" VBox.margin="$x1" />
-        <Button fx:id="viewDetails" mnemonicParsing="false" onMouseClicked="#viewDetails" text="%patient.viewDetails" VBox.margin="$x1" />
-      </children>
-      <BorderPane.margin>
-        <Insets top="20.0" />
-      </BorderPane.margin>
+    <VBox prefHeight="201.0" prefWidth="160.0" spacing="10.0">
+      <padding>
+        <Insets top="10.0" />
+      </padding>
+      <Button fx:id="addPatient" mnemonicParsing="false" prefWidth="350" onMouseClicked="#addPatient"
+              text="%patient.add"/>
+      <Button fx:id="viewDetails" mnemonicParsing="false" prefWidth="350" onMouseClicked="#viewDetails" text="%patient.viewDetails"/>
+      <Button fx:id="deletePatient" mnemonicParsing="false" prefWidth="350" onMouseClicked="#deletePatient" text="%patient.delete"/>
     </VBox>
   </right>
   <top>
     <ToolBar>
       <items>
-        <Button fx:id="patients" mnemonicParsing="false" onMouseClicked="#patients" text="%patient" />
-        <Button fx:id="doctors" mnemonicParsing="false" onMouseClicked="#doctors" text="%doctor" />
-        <Button fx:id="appointments" mnemonicParsing="false" onMouseClicked="#appointments" text="%appointment" />
+        <Button fx:id="patients" mnemonicParsing="false" onMouseClicked="#patients" text="%patients" />
+        <Button fx:id="doctors" mnemonicParsing="false" onMouseClicked="#doctors" text="%doctors" />
+        <Button fx:id="appointments" mnemonicParsing="false" onMouseClicked="#appointments" text="%appointments" />
       </items>
     </ToolBar>
   </top>
