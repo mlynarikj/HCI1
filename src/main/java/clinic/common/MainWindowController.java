@@ -34,8 +34,6 @@ public class MainWindowController implements Initializable {
 
     protected ResourceBundle bundle;
 
-    protected ResourceBundle bundle;
-
     protected Stage stage;
 
     protected ClinicDBAccess clinicDBAccess;

@@ -35,6 +35,7 @@ public class Clinic extends Application {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.getButtonTypes().setAll(english, spanish);
         alert.setTitle("Choose language");
+        alert.setHeaderText("Confirmation/Confirmación");
         alert.setContentText("Choose language\nElegir idioma");
         alert.showAndWait().ifPresent(p -> {
             if (p == spanish) {
@@ -52,7 +53,7 @@ public class Clinic extends Application {
 
         main.initStage(primaryStage);
         main.initClinic(ClinicDBAccess.getSingletonClinicDBAccess());
-        primaryStage.setOnCloseRequest(event ->{
+        primaryStage.setOnCloseRequest(event -> {
             Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
             alert1.setTitle(bundle.getString("savingDB"));
             alert1.show();
@@ -61,7 +62,7 @@ public class Clinic extends Application {
         });
         Scene scene = new Scene(root);
         //Application.setUserAgentStylesheet(Application.CASPIAN);
-        primaryStage.setTitle("Main Window");
+        primaryStage.setTitle(bundle.getString("mainWindow.title"));
         primaryStage.setScene(scene);
         primaryStage.show();
     }
