@@ -16,13 +16,13 @@
 <?import jfxtras.scene.control.LocalDatePicker?>
 <?scenebuilder-classpath-element ../../resources?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clinic.appointments.AddAppointment">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" styleClass="panel-primary, panel" fx:controller="clinic.appointments.AddAppointment">
   <bottom>
     <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="600.0" spacing="20.0">
       <padding>
         <Insets right="20.0" />
       </padding>
-      <Button mnemonicParsing="false" onMouseClicked="#save" text="%save" />
+      <Button mnemonicParsing="false" styleClass="btn-primary" onMouseClicked="#save" text="%save" />
       <Button mnemonicParsing="false" onMouseClicked="#cancel" text="%cancel" />
     </HBox>
   </bottom>
@@ -102,7 +102,7 @@
     </VBox>
   </right>
   <top>
-    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+    <HBox alignment="CENTER" styleClass="panel-heading" prefHeight="100.0" prefWidth="200.0">
       <Label text="%appointment.form" textFill="BLACK" textOverrun="CENTER_ELLIPSIS">
         <font>
           <Font name="System Bold" size="22.0" />
