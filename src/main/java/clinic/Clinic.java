@@ -31,12 +31,12 @@ public class Clinic extends Application {
 
         AtomicReference<Locale> local = new AtomicReference<>(Locale.getDefault());
         ButtonType english = new ButtonType("English");
-        ButtonType spanish = new ButtonType("Español");
+        ButtonType spanish = new ButtonType("Espa\u00F1ol");
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.getButtonTypes().setAll(english, spanish);
         alert.setTitle("Choose language");
         alert.getDialogPane().getStylesheets().add("styles/alerts.css");
-        alert.setHeaderText("Confirmation/Confirmación");
+        alert.setHeaderText("Confirmation/Confirmaci\u00F3n");
         alert.setContentText("Choose language\nElegir idioma");
         alert.showAndWait().ifPresent(p -> {
             if (p == spanish) {
