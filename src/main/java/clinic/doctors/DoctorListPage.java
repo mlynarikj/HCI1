@@ -85,6 +85,7 @@ public class DoctorListPage extends MainWindowController {
             if (p == ButtonType.OK) {
                 doctorList.remove(delete);
                 Alert ale =  new Alert(Alert.AlertType.INFORMATION);
+                ale.setHeaderText(bundle.getString("alert.message"));
                 ale.setTitle(bundle.getString("delete"));
                 ale.setContentText(bundle.getString("alert.successfulDelete"));
                 ale.show();

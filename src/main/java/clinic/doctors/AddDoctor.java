@@ -23,6 +23,7 @@ import model.Person;
 
 import java.awt.*;
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -103,6 +104,8 @@ public class AddDoctor extends MainWindowController {
         room.getSelectionModel().selectFirst();
         checkBoxes.addAll(Arrays.asList(monday, tuesday, wednesday, thursday, friday, saturday, sunday));
         from.setMinuteStep(15);
+        from.setLocalTime(LocalTime.of(10,0));
+        to.setLocalTime(LocalTime.of(12,0));
         to.setMinuteStep(15);
     }
 

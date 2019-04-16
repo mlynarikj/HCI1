@@ -126,7 +126,7 @@ public class PatientsController extends MainWindowController {
             if (p == ButtonType.OK) {
                 obsList.remove(delete);
                 Alert ale =  new Alert(Alert.AlertType.INFORMATION);
-                ale.setHeaderText(bundle.getString("alert.information"));
+                ale.setHeaderText(bundle.getString("alert.message"));
                 ale.setTitle(bundle.getString("delete"));
                 ale.setContentText(bundle.getString("alert.successfulDelete"));
                 ale.show();

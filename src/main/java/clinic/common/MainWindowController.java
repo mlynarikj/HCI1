@@ -38,7 +38,7 @@ public class MainWindowController implements Initializable {
 
     protected ClinicDBAccess clinicDBAccess;
 
-    protected DateTimeFormatter timeFormatter = DateTimeFormatter.ISO_LOCAL_TIME;
+    protected DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 
 
     @Override
