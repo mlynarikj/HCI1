@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="386.0" prefWidth="588.0" xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane prefHeight="386.0" prefWidth="588.0" styleClass="panel-primary, panel" xmlns:fx="http://javafx.com/fxml/1"
             xmlns="http://javafx.com/javafx/2.2" fx:controller="clinic.patients.PatientDetailsController">
     <bottom>
         <HBox alignment="CENTER_RIGHT" minHeight="82.0" prefHeight="102.0" prefWidth="588.0"
@@ -66,7 +66,7 @@
         </VBox>
     </right>
     <top>
-        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="588.0">
+        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="588.0" styleClass="panel-heading">
             <children>
                 <Label text="Patient Details">
                     <font>

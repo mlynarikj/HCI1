@@ -88,6 +88,7 @@ public class MainWindowController implements Initializable {
         function.accept(controller);
 
         Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
+        scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
 //        new JMetro(JMetro.Style.LIGHT).applyTheme(scene);
 
         stage.setScene(scene);

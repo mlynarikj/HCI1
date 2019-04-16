@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="clinic.patients.AddPersonController">
+<BorderPane prefHeight="400.0" prefWidth="600.0" styleClass="panel-primary, panel" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="clinic.patients.AddPersonController">
   <bottom>
     <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="600.0" spacing="20.0">
       <children>
-        <Button fx:id="save" mnemonicParsing="false" onMouseClicked="#save" text="%save" />
+        <Button fx:id="save" styleClass="btn-primary" mnemonicParsing="false" onMouseClicked="#save" text="%save" />
         <Button fx:id="cancel" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onMouseClicked="#cancel" text="%cancel" />
       </children>
       <padding>
@@ -53,12 +53,12 @@
     <VBox alignment="CENTER" prefHeight="220.0" prefWidth="144.0">
       <children>
         <ImageView fx:id="image" fitHeight="80.0" fitWidth="77.25714401971726" onMouseClicked="#addPhoto" pickOnBounds="true" preserveRatio="true" />
-        <Button mnemonicParsing="false" onMouseClicked="#addPhoto" text="%addPhoto" />
+        <Button mnemonicParsing="false" onMouseClicked="#addPhoto" styleClass="btn-info" text="%addPhoto" />
       </children>
     </VBox>
   </right>
   <top>
-    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+    <HBox alignment="CENTER" styleClass="panel-heading" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
       <children>
         <Label contentDisplay="LEFT" text="%addPatient.patientForm" textFill="BLACK" textOverrun="CENTER_ELLIPSIS">
           <font>
