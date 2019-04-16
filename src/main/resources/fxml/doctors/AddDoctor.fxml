@@ -19,121 +19,136 @@
 <?import jfxtras.scene.control.LocalTimePicker?>
 <?scenebuilder-classpath-element ../../resources?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clinic.doctors.AddDoctor">
-  <bottom>
-    <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="600.0" spacing="20.0">
-      <padding>
-        <Insets right="20.0" />
-      </padding>
-      <Button mnemonicParsing="false" onMouseClicked="#save" text="%save" />
-      <Button mnemonicParsing="false" onMouseClicked="#cancel" text="%cancel" />
-    </HBox>
-  </bottom>
-  <center>
-    <GridPane hgap="10.0" prefHeight="329.0" prefWidth="570.0" vgap="10.0">
-      <columnConstraints>
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
-        <ColumnConstraints hgrow="SOMETIMES" />
-      </columnConstraints>
-      <rowConstraints>
-        <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
-        <RowConstraints vgrow="SOMETIMES" />
-      </rowConstraints>
-      <Label alignment="CENTER_RIGHT" text="%id" GridPane.columnIndex="0" GridPane.rowIndex="0">
-        <font>
-          <Font name="System Bold Italic" size="18.0" fx:id="x1" />
-        </font>
-      </Label>
-      <TextField fx:id="dni" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-      <TextField fx:id="name" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Label alignment="CENTER_RIGHT" font="$x1" text="%name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-      <Label alignment="CENTER_RIGHT" font="$x1" text="%surname" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-      <Label alignment="CENTER_RIGHT" font="$x1" text="%telephone" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-      <Label alignment="CENTER_RIGHT" font="$x1" text="%examinationRoom" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-      <Label alignment="CENTER_RIGHT" font="$x1" text="%workingHours" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-      <Label alignment="CENTER_RIGHT" font="$x1" text="%workingDays" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-      <ChoiceBox fx:id="room" maxWidth="1.7976931348623157E308" prefWidth="365.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-        <items>
-          <FXCollections fx:factory="observableArrayList">
-            <String fx:value="Item 1" />
-            <String fx:value="Item 2" />
-            <String fx:value="Item 3" />
-          </FXCollections>
-        </items>
-      </ChoiceBox>
-      <TextField fx:id="telephone" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <TextField fx:id="surname" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <HBox prefHeight="24.0" prefWidth="365.0" spacing="30.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-        <VBox alignment="TOP_CENTER">
-          <children>
-            <Label text="%from" />
-            <LocalTimePicker fx:id="from" prefWidth="200.0" />
-          </children>
-        </VBox>
-        <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0">
-          <children>
-            <Label text="%to" />
-            <LocalTimePicker fx:id="to" prefWidth="200.0" />
-          </children>
-        </VBox>
-        <padding>
-          <Insets left="20.0" />
-        </padding>
-      </HBox>
-      <GridPane hgap="10.0" style="-fx-border-width: 1;&#10;-fx-border-color: gray;&#10;-fx-border-radius: 5;&#10;" vgap="5.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
-
-        <columnConstraints>
-          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" />
-          <ColumnConstraints hgrow="SOMETIMES" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints vgrow="SOMETIMES" />
-          <RowConstraints vgrow="SOMETIMES" />
-          <RowConstraints vgrow="SOMETIMES" />
-          <RowConstraints vgrow="SOMETIMES" />
-        </rowConstraints>
-
-        <CheckBox fx:id="monday" mnemonicParsing="false" prefWidth="106.0" text="%monday" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <CheckBox fx:id="friday" mnemonicParsing="false" text="%friday" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-        <CheckBox fx:id="tuesday" mnemonicParsing="false" prefWidth="106.0" text="%tuesday" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-        <CheckBox fx:id="saturday" mnemonicParsing="false" text="%saturday" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <CheckBox fx:id="wednesday" mnemonicParsing="false" text="%wednesday" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-        <CheckBox fx:id="sunday" mnemonicParsing="false" text="%sunday" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <CheckBox fx:id="thursday" mnemonicParsing="false" text="%thursday" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.172-ea" styleClass="panel-primary, panel"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="clinic.doctors.AddDoctor">
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="600.0" spacing="20.0">
             <padding>
-               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                <Insets right="20.0"/>
             </padding>
-      </GridPane>
-    </GridPane>
-  </center>
-  <left>
-    <VBox spacing="20.0">
-      <padding>
-        <Insets left="10.0" />
-      </padding>
-    </VBox>
-  </left>
-  <right>
-    <VBox alignment="CENTER" prefWidth="144.0">
-      <ImageView fx:id="imageView" fitHeight="80.0" fitWidth="80" pickOnBounds="true" preserveRatio="true" />
-      <Button onMouseClicked="#addPhoto" text="%addPhoto" />
-    </VBox>
-  </right>
-  <top>
-    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-      <Label text="%doctor.form" textFill="BLACK" textOverrun="CENTER_ELLIPSIS">
-        <font>
-          <Font name="System Bold" size="22.0" />
-        </font>
-      </Label>
-    </HBox>
-  </top>
+            <Button mnemonicParsing="false" styleClass="btn-primary" onMouseClicked="#save" text="%save"/>
+            <Button mnemonicParsing="false" styleClass="btn-info" onMouseClicked="#cancel" text="%cancel"/>
+        </HBox>
+    </bottom>
+    <center>
+        <GridPane hgap="10.0" prefHeight="329.0" prefWidth="570.0" vgap="10.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES"/>
+                <ColumnConstraints hgrow="SOMETIMES"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <Label alignment="CENTER_RIGHT" text="%id" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <font>
+                    <Font name="System Bold Italic" size="18.0" fx:id="x1"/>
+                </font>
+            </Label>
+            <TextField fx:id="dni" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <TextField fx:id="name" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <Label alignment="CENTER_RIGHT" font="$x1" text="%name" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Label alignment="CENTER_RIGHT" font="$x1" text="%surname" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <Label alignment="CENTER_RIGHT" font="$x1" text="%telephone" GridPane.columnIndex="0"
+                   GridPane.rowIndex="3"/>
+            <Label alignment="CENTER_RIGHT" font="$x1" text="%examinationRoom" GridPane.columnIndex="0"
+                   GridPane.rowIndex="4"/>
+            <Label alignment="CENTER_RIGHT" font="$x1" text="%workingHours" GridPane.columnIndex="0"
+                   GridPane.rowIndex="5"/>
+            <Label alignment="CENTER_RIGHT" font="$x1" text="%workingDays" GridPane.columnIndex="0"
+                   GridPane.rowIndex="6"/>
+            <ChoiceBox fx:id="room" styleClass="split-menu-btn-info" maxWidth="1.7976931348623157E308" prefWidth="365.0" GridPane.columnIndex="1"
+                       GridPane.rowIndex="4">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Item 1"/>
+                        <String fx:value="Item 2"/>
+                        <String fx:value="Item 3"/>
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <TextField fx:id="telephone" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <TextField fx:id="surname" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            <HBox prefHeight="24.0" prefWidth="365.0" spacing="30.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                <VBox alignment="TOP_CENTER">
+                    <children>
+                        <Label text="%from"/>
+                        <LocalTimePicker fx:id="from" prefWidth="200.0"/>
+                    </children>
+                </VBox>
+                <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0">
+                    <children>
+                        <Label text="%to"/>
+                        <LocalTimePicker fx:id="to" prefWidth="200.0"/>
+                    </children>
+                </VBox>
+                <padding>
+                    <Insets left="20.0"/>
+                </padding>
+            </HBox>
+            <GridPane hgap="10.0"
+                      style="-fx-border-width: 1;&#10;-fx-border-color: gray;&#10;-fx-border-radius: 5;&#10;" vgap="5.0"
+                      GridPane.columnIndex="1" GridPane.rowIndex="6">
+
+                <columnConstraints>
+                    <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES"/>
+                    <ColumnConstraints hgrow="SOMETIMES"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints vgrow="SOMETIMES"/>
+                    <RowConstraints vgrow="SOMETIMES"/>
+                    <RowConstraints vgrow="SOMETIMES"/>
+                    <RowConstraints vgrow="SOMETIMES"/>
+                </rowConstraints>
+
+                <CheckBox fx:id="monday" mnemonicParsing="false" prefWidth="106.0" text="%monday"
+                          GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <CheckBox fx:id="friday" mnemonicParsing="false" text="%friday" GridPane.columnIndex="1"
+                          GridPane.rowIndex="0"/>
+                <CheckBox fx:id="tuesday" mnemonicParsing="false" prefWidth="106.0" text="%tuesday"
+                          GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <CheckBox fx:id="saturday" mnemonicParsing="false" text="%saturday" GridPane.columnIndex="1"
+                          GridPane.rowIndex="1"/>
+                <CheckBox fx:id="wednesday" mnemonicParsing="false" text="%wednesday" GridPane.columnIndex="0"
+                          GridPane.rowIndex="2"/>
+                <CheckBox fx:id="sunday" mnemonicParsing="false" text="%sunday" GridPane.columnIndex="1"
+                          GridPane.rowIndex="2"/>
+                <CheckBox fx:id="thursday" mnemonicParsing="false" text="%thursday" GridPane.columnIndex="0"
+                          GridPane.rowIndex="3"/>
+                <opaqueInsets>
+                    <Insets/>
+                </opaqueInsets>
+                <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                </padding>
+            </GridPane>
+        </GridPane>
+    </center>
+    <left>
+        <VBox spacing="20.0">
+            <padding>
+                <Insets left="10.0"/>
+            </padding>
+        </VBox>
+    </left>
+    <right>
+        <VBox alignment="CENTER" prefWidth="144.0">
+            <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="120" pickOnBounds="true" preserveRatio="true"/>
+            <Button onMouseClicked="#addPhoto" styleClass="btn-info" text="%addPhoto"/>
+        </VBox>
+    </right>
+    <top>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="panel-heading">
+            <Label text="%doctor.form" textFill="BLACK" textOverrun="CENTER_ELLIPSIS">
+                <font>
+                    <Font name="System Bold" size="22.0"/>
+                </font>
+            </Label>
+        </HBox>
+    </top>
 </BorderPane>

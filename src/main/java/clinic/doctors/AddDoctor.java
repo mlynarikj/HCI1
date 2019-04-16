@@ -155,6 +155,7 @@ public class AddDoctor extends MainWindowController {
         doctor.setPhoto(imageView.getImage());
         if (errors.length() != 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.getDialogPane().getStylesheets().add("styles/alerts.css");
             alert.setTitle(bundle.getString("alerts.doctor.invalid"));
             alert.setContentText(errors.toString());
             alert.show();

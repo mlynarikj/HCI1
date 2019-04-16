@@ -82,6 +82,7 @@ public class AppointmentListPage extends MainWindowController {
         if (delete.getAppointmentDateTime().isBefore(LocalDateTime.now())) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.getDialogPane().getStylesheets().add("styles/alerts.css");
             alert.setTitle(bundle.getString("alerts.FailedDelete"));
             alert.setContentText(bundle.getString("alerts.FailedDelete.appointment"));
             alert.show();
@@ -89,12 +90,14 @@ public class AppointmentListPage extends MainWindowController {
         }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.getDialogPane().getStylesheets().add("styles/alerts.css");
         alert.setHeaderText(bundle.getString("alert.confirmation"));
         alert.setTitle(bundle.getString("delete"));
         alert.setContentText(bundle.getString("alerts.aboutToDelete.appointment1") + delete.getDoctor().getSurname() + bundle.getString("alerts.aboutToDelete.appointment2") + delete.getPatient().getSurname());
         alert.showAndWait().ifPresent(p -> {
             if (p == ButtonType.OK) {
                 Alert ale =  new Alert(Alert.AlertType.INFORMATION);
+                ale.getDialogPane().getStylesheets().add("styles/alerts.css");
                 ale.setHeaderText(bundle.getString("alert.message"));
                 ale.setTitle(bundle.getString("delete"));
                 ale.setContentText(bundle.getString("alert.successfulDelete"));

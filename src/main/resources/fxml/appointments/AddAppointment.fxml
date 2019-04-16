@@ -50,7 +50,7 @@
       <Label alignment="CENTER_RIGHT" font="$x1" text="%doctor" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
       <Label alignment="CENTER_RIGHT" font="$x1" text="%day" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
       <Label alignment="CENTER_RIGHT" font="$x1" text="%timeSlot" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-      <ChoiceBox id="room" fx:id="patient" maxWidth="1.7976931348623157E308" prefWidth="365.0" GridPane.columnIndex="1"
+      <ChoiceBox id="room" fx:id="patient" styleClass="split-menu-btn-info" maxWidth="1.7976931348623157E308" prefWidth="365.0" GridPane.columnIndex="1"
                  GridPane.rowIndex="0">
         <items>
           <FXCollections fx:factory="observableArrayList">
@@ -60,7 +60,7 @@
           </FXCollections>
         </items>
       </ChoiceBox>
-      <ChoiceBox id="room" fx:id="doctor" maxWidth="1.7976931348623157E308" prefWidth="365.0" GridPane.columnIndex="1"
+      <ChoiceBox id="room" fx:id="doctor" styleClass="split-menu-btn-info" maxWidth="1.7976931348623157E308" prefWidth="365.0" GridPane.columnIndex="1"
                  GridPane.rowIndex="1">
         <items>
           <FXCollections fx:factory="observableArrayList">
@@ -81,7 +81,7 @@
         </padding>
       </LocalDatePicker>
 
-      <ChoiceBox id="room" fx:id="slot" maxWidth="1.7976931348623157E308" prefWidth="365.0" GridPane.columnIndex="1"
+      <ChoiceBox id="room" fx:id="slot" styleClass="split-menu-btn-info" maxWidth="1.7976931348623157E308" prefWidth="365.0" GridPane.columnIndex="1"
                  GridPane.rowIndex="3">
 
       </ChoiceBox>

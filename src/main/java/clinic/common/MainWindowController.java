@@ -18,13 +18,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import jfxtras.styles.jmetro8.JMetro;
 
 /**
  * FXML Controller class
@@ -78,6 +75,7 @@ public class MainWindowController implements Initializable {
             root = loader.load();
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.getDialogPane().getStylesheets().add("styles/alerts.css");
             alert.setTitle(bundle.getString("alerts.invalidFxml"));
             alert.setContentText(e.getMessage());
             alert.show();
@@ -90,10 +88,7 @@ public class MainWindowController implements Initializable {
 
         Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
         scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-//        new JMetro(JMetro.Style.LIGHT).applyTheme(scene);
-
-        scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-        scene.getStylesheets().add("styles.css");
+        scene.getStylesheets().add("styles/tables.css");
         stage.setScene(scene);
         stage.show();
         return controller;

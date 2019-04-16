@@ -72,12 +72,14 @@ public class DoctorListPage extends MainWindowController {
         if (delete == null) return;
         if (clinicDBAccess.hasAppointments(delete)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.getDialogPane().getStylesheets().add("styles/alerts.css");
             alert.setTitle(bundle.getString("alerts.FailedDelete"));
             alert.setContentText(bundle.getString("alerts.FailedDelete.doctor"));
             alert.show();
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.getDialogPane().getStylesheets().add("styles/alerts.css");
         alert.setHeaderText(bundle.getString("alert.confirmation"));
         alert.setTitle(bundle.getString("delete")+" " + delete.getSurname());
         alert.setContentText(bundle.getString("alerts.aboutToDelete.doctor") + delete.getSurname());
@@ -85,6 +87,7 @@ public class DoctorListPage extends MainWindowController {
             if (p == ButtonType.OK) {
                 doctorList.remove(delete);
                 Alert ale =  new Alert(Alert.AlertType.INFORMATION);
+                ale.getDialogPane().getStylesheets().add("styles/alerts.css");
                 ale.setHeaderText(bundle.getString("alert.message"));
                 ale.setTitle(bundle.getString("delete"));
                 ale.setContentText(bundle.getString("alert.successfulDelete"));

@@ -52,7 +52,7 @@
   <right>
     <VBox alignment="CENTER" prefHeight="220.0" prefWidth="144.0">
       <children>
-        <ImageView fx:id="image" fitHeight="80.0" fitWidth="77.25714401971726" onMouseClicked="#addPhoto" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="image" fitHeight="120.0" fitWidth="120" onMouseClicked="#addPhoto" pickOnBounds="true" preserveRatio="true" />
         <Button mnemonicParsing="false" onMouseClicked="#addPhoto" styleClass="btn-info" text="%addPhoto" />
       </children>
     </VBox>

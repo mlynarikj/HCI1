@@ -81,6 +81,7 @@ public class AddAppointment extends MainWindowController {
     public void save(MouseEvent mouseEvent) {
         if (week.getLocalDate() == null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.getDialogPane().getStylesheets().add("styles/alerts.css");
             alert.setTitle(bundle.getString("alerts.appointment.invalid"));
             alert.setContentText(bundle.getString("alerts.appointment.emptyDate"));
             alert.show();
@@ -90,6 +91,7 @@ public class AddAppointment extends MainWindowController {
                 .add(new Appointment(LocalDateTime.of(week.getLocalDate(),LocalTime.parse(slot.getValue(),DateTimeFormatter.ofPattern("HH:mm"))), (Doctor) doctor.getValue().getPerson(), (Patient) patient.getValue().getPerson()));
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.getDialogPane().getStylesheets().add("styles/alerts.css");
         alert.setHeaderText(bundle.getString("alert.message"));
         alert.setTitle(bundle.getString("alerts.appointment.created"));
         alert.setContentText(bundle.getString("alerts.appointment.created.text"));

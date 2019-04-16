@@ -105,6 +105,7 @@ public class AddPersonController extends MainWindowController {
 
         if (errors.length() != 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.getDialogPane().getStylesheets().add("styles/alerts.css");
             alert.setTitle(bundle.getString("alerts.patient.invalid"));
             alert.setContentText(errors.toString());
             alert.show();
@@ -112,6 +113,7 @@ public class AddPersonController extends MainWindowController {
         }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.getDialogPane().getStylesheets().add("styles/alerts.css");
         alert.setHeaderText(bundle.getString("alert.message"));
         alert.setTitle(bundle.getString("alerts.patient.created"));
         alert.setContentText(bundle.getString("patient")+" " + name.getText() + " " + surname.getText() + bundle.getString("created"));

@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.collections.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?scenebuilder-classpath-element ../../resources?>
 
-<BorderPane prefHeight="681.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
-            fx:controller="clinic.doctors.ViewDoctor">
+<BorderPane prefHeight="681.0" styleClass="panel, panel-primary" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clinic.doctors.ViewDoctor">
     <bottom>
         <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="600.0" spacing="20.0">
             <padding>
-                <Insets right="20.0"/>
+                <Insets right="20.0" />
             </padding>
-            <Button mnemonicParsing="false" onMouseClicked="#cancel" text="%cancel"/>
+            <Button mnemonicParsing="false" onMouseClicked="#cancel" styleClass="btn-default" text="%cancel" />
         </HBox>
     </bottom>
     <center>
@@ -26,102 +31,88 @@
             <children>
                 <Label alignment="CENTER_RIGHT" text="%id" GridPane.columnIndex="0" GridPane.rowIndex="0">
                     <font>
-                        <Font name="System Bold Italic" size="18.0" fx:id="x1"/>
+                        <Font name="System Bold Italic" size="18.0" fx:id="x1" />
                     </font>
                 </Label>
-                <Label alignment="CENTER_RIGHT" font="$x1" text="%name" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                <Label alignment="CENTER_RIGHT" font="$x1" text="%surname" GridPane.columnIndex="0"
-                       GridPane.rowIndex="2"/>
-                <Label alignment="CENTER_RIGHT" font="$x1" text="%telephone" GridPane.columnIndex="0"
-                       GridPane.rowIndex="3"/>
-                <Label alignment="CENTER_RIGHT" font="$x1" text="%examinationRoom" GridPane.columnIndex="0"
-                       GridPane.rowIndex="4"/>
-                <Label alignment="CENTER_RIGHT" font="$x1" text="%workingHours" GridPane.columnIndex="0"
-                       GridPane.rowIndex="5"/>
-                <Label alignment="CENTER_RIGHT" font="$x1" text="%workingDays" GridPane.columnIndex="0"
-                       GridPane.rowIndex="6"/>
+                <Label alignment="CENTER_RIGHT" font="$x1" text="%name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label alignment="CENTER_RIGHT" font="$x1" text="%surname" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <Label alignment="CENTER_RIGHT" font="$x1" text="%telephone" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <Label alignment="CENTER_RIGHT" font="$x1" text="%examinationRoom" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <Label alignment="CENTER_RIGHT" font="$x1" text="%workingHours" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                <Label alignment="CENTER_RIGHT" font="$x1" text="%workingDays" GridPane.columnIndex="0" GridPane.rowIndex="6" />
                 <HBox prefHeight="24.0" prefWidth="365.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                    <TextField fx:id="from" editable="false" prefWidth="200.0" promptText="%from" text="8:00"/>
-                    <TextField fx:id="to" editable="false" prefWidth="200.0" promptText="%to" text="16:00"/>
+                    <TextField fx:id="from" editable="false" prefWidth="200.0" promptText="%from" text="8:00" />
+                    <TextField fx:id="to" editable="false" prefWidth="200.0" promptText="%to" text="16:00" />
                 </HBox>
-                <VBox prefHeight="120.0" prefWidth="345.0" spacing="5.0"
-                      style="-fx-border-width: 1;&#10;-fx-border-color: gray;&#10;-fx-border-radius: 5;&#10;"
-                      GridPane.columnIndex="1" GridPane.rowIndex="6">
+                <VBox prefHeight="120.0" prefWidth="345.0" spacing="5.0" style="-fx-border-width: 1;&#10;-fx-border-color: gray;&#10;-fx-border-radius: 5;&#10;" GridPane.columnIndex="1" GridPane.rowIndex="6">
                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                     <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0">
-                        <CheckBox fx:id="monday" disable="true" mnemonicParsing="false" prefWidth="102.0"
-                                  style="-fx-opacity: 1;" text="%monday"/>
-                        <CheckBox fx:id="friday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1;"
-                                  text="%friday"/>
+                        <CheckBox fx:id="monday" disable="true" mnemonicParsing="false" prefWidth="102.0" style="-fx-opacity: 1;" text="%monday" />
+                        <CheckBox fx:id="friday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1;" text="%friday" />
                     </HBox>
                     <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0">
-                        <CheckBox fx:id="tuesday" disable="true" mnemonicParsing="false" prefWidth="102.0"
-                                  style="-fx-opacity: 1" text="%tuesday"/>
-                        <CheckBox fx:id="saturday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1"
-                                  text="%saturday"/>
+                        <CheckBox fx:id="tuesday" disable="true" mnemonicParsing="false" prefWidth="102.0" style="-fx-opacity: 1" text="%tuesday" />
+                        <CheckBox fx:id="saturday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1" text="%saturday" />
                     </HBox>
                     <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0">
-                        <CheckBox fx:id="wednesday" disable="true" mnemonicParsing="false" prefWidth="102.0"
-                                  style="-fx-opacity: 1" text="%wednesday"/>
-                        <CheckBox fx:id="sunday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1"
-                                  text="%sunday"/>
+                        <CheckBox fx:id="wednesday" disable="true" mnemonicParsing="false" prefWidth="102.0" style="-fx-opacity: 1" text="%wednesday" />
+                        <CheckBox fx:id="sunday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1" text="%sunday" />
                     </HBox>
                     <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0">
-                        <CheckBox fx:id="thursday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1"
-                                  text="%thursday"/>
+                        <CheckBox fx:id="thursday" disable="true" mnemonicParsing="false" style="-fx-opacity: 1" text="%thursday" />
                     </HBox>
                 </VBox>
-                <Label fx:id="dni" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                <Label fx:id="name" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                <Label fx:id="surname" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                <Label fx:id="phone" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-                <Label fx:id="room" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-                <TableView fx:id="appointmentTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
-                           GridPane.rowIndex="7">
+                <Label fx:id="dni" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Label fx:id="name" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label fx:id="surname" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label fx:id="phone" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label fx:id="room" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <TableView fx:id="appointmentTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                     <columns>
-                        <TableColumn text="%patient" fx:id="patient"/>
-                        <TableColumn text="%dateAndTime" fx:id="dateTime"/>
+                        <TableColumn fx:id="patient" text="%patient" />
+                        <TableColumn fx:id="dateTime" text="%dateAndTime" />
                     </columns>
                 </TableView>
-                <Label alignment="CENTER_RIGHT" font="$x1" text="%appointments" GridPane.columnIndex="0"
-                       GridPane.rowIndex="7"/>
+                <Label alignment="CENTER_RIGHT" font="$x1" text="%appointments" GridPane.columnIndex="0" GridPane.rowIndex="7" />
             </children>
             <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES"/>
-                <ColumnConstraints hgrow="SOMETIMES"/>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="SOMETIMES" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints vgrow="SOMETIMES"/>
-                <RowConstraints vgrow="SOMETIMES"/>
-                <RowConstraints vgrow="SOMETIMES"/>
-                <RowConstraints vgrow="SOMETIMES"/>
-                <RowConstraints vgrow="SOMETIMES"/>
-                <RowConstraints vgrow="SOMETIMES"/>
-                <RowConstraints vgrow="SOMETIMES"/>
-                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
             </rowConstraints>
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin>
         </GridPane>
     </center>
     <left>
         <VBox spacing="20.0">
             <padding>
-                <Insets left="10.0"/>
+                <Insets left="10.0" />
             </padding>
         </VBox>
     </left>
     <right>
         <VBox alignment="CENTER" prefWidth="144.0">
-            <ImageView fx:id="imgView" fitHeight="80.0" fitWidth="77.25714401971726" pickOnBounds="true"
-                       preserveRatio="true"/>
+            <ImageView fx:id="imgView" fitHeight="80.0" fitWidth="77.25714401971726" pickOnBounds="true" preserveRatio="true" />
         </VBox>
     </right>
     <top>
-        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="panel-heading">
             <Label text="%doctor.detail" textFill="BLACK" textOverrun="CENTER_ELLIPSIS">
                 <font>
-                    <Font name="System Bold" size="22.0"/>
+                    <Font name="System Bold" size="22.0" />
                 </font>
             </Label>
         </HBox>

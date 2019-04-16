@@ -13,7 +13,6 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import DBAccess.ClinicDBAccess;
 import clinic.common.MainWindowController;
-import com.aquafx_project.AquaFx;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,8 +20,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import jfxtras.styles.jmetro8.JMetro;
 
 /**
  * @author olemf
@@ -38,6 +35,7 @@ public class Clinic extends Application {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.getButtonTypes().setAll(english, spanish);
         alert.setTitle("Choose language");
+        alert.getDialogPane().getStylesheets().add("styles/alerts.css");
         alert.setHeaderText("Confirmation/Confirmación");
         alert.setContentText("Choose language\nElegir idioma");
         alert.showAndWait().ifPresent(p -> {
@@ -58,6 +56,7 @@ public class Clinic extends Application {
         main.initClinic(ClinicDBAccess.getSingletonClinicDBAccess());
         primaryStage.setOnCloseRequest(event -> {
             Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+            alert1.getDialogPane().getStylesheets().add("styles/alerts.css");
             alert1.setHeaderText(bundle.getString("alert.message"));
             alert1.setTitle(bundle.getString("savingDB"));
             alert1.setContentText(bundle.getString("savingDB"));
@@ -65,11 +64,8 @@ public class Clinic extends Application {
             ClinicDBAccess.getSingletonClinicDBAccess().saveDB();
             alert1.close();
         });
-
-//        AquaFx.style();
         Scene scene = new Scene(root);
         scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-        //Application.setUserAgentStylesheet(Application.CASPIAN);
         primaryStage.setTitle(bundle.getString("mainWindow.title"));
         primaryStage.setScene(scene);
         primaryStage.show();
