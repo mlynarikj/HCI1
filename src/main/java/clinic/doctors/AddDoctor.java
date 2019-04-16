@@ -159,6 +159,7 @@ public class AddDoctor extends MainWindowController {
         }
         doctorList.add(doctor);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(bundle.getString("alert.message"));
         alert.setTitle(bundle.getString("alerts.doctor.created"));
         alert.setContentText(bundle.getString("doctor") + " " + name.getText() + " " + surname.getText() + " created");
         alert.show();

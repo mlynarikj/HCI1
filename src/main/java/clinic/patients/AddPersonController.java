@@ -76,9 +76,6 @@ public class AddPersonController extends MainWindowController {
     @FXML
     private void save(MouseEvent event)
     {
-
-
-
         StringBuilder errors = new StringBuilder();
         Patient patient = new Patient();
 
@@ -115,6 +112,7 @@ public class AddPersonController extends MainWindowController {
         }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(bundle.getString("alert.message"));
         alert.setTitle(bundle.getString("alerts.patient.created"));
         alert.setContentText(bundle.getString("patient")+" " + name.getText() + " " + surname.getText() + bundle.getString("created"));
         alert.show();

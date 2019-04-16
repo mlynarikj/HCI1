@@ -13,7 +13,7 @@
   <bottom>
     <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="600.0" spacing="20.0">
       <children>
-        <Button fx:id="save" mnemonicParsing="false" onMouseClicked="#save" prefWidth="70.0" text="%save" />
+        <Button fx:id="save" mnemonicParsing="false" onMouseClicked="#save" text="%save" />
         <Button fx:id="cancel" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onMouseClicked="#cancel" text="%cancel" />
       </children>
       <padding>

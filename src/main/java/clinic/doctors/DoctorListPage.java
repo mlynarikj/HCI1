@@ -78,11 +78,16 @@ public class DoctorListPage extends MainWindowController {
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(bundle.getString("alert.confirmation"));
         alert.setTitle(bundle.getString("delete")+" " + delete.getSurname());
         alert.setContentText(bundle.getString("alerts.aboutToDelete.doctor") + delete.getSurname());
         alert.showAndWait().ifPresent(p -> {
             if (p == ButtonType.OK) {
                 doctorList.remove(delete);
+                Alert ale =  new Alert(Alert.AlertType.INFORMATION);
+                ale.setTitle(bundle.getString("delete"));
+                ale.setContentText(bundle.getString("alert.successfulDelete"));
+                ale.show();
             }
         });
 

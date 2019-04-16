@@ -119,11 +119,17 @@ public class PatientsController extends MainWindowController {
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(bundle.getString("alert.confirmation"));
         alert.setTitle(bundle.getString("delete") + " " + delete.getSurname());
         alert.setContentText(bundle.getString("alerts.aboutToDelete.patient") + delete.getSurname());
         alert.showAndWait().ifPresent(p -> {
             if (p == ButtonType.OK) {
                 obsList.remove(delete);
+                Alert ale =  new Alert(Alert.AlertType.INFORMATION);
+                ale.setHeaderText(bundle.getString("alert.information"));
+                ale.setTitle(bundle.getString("delete"));
+                ale.setContentText(bundle.getString("alert.successfulDelete"));
+                ale.show();
             }
         });
     }

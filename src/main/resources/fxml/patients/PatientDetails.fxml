@@ -52,6 +52,7 @@
                 <columns>
                     <TableColumn text="%doctor" fx:id="doctor"/>
                     <TableColumn text="%dateAndTime" fx:id="dateTime"/>
+                    <TableColumn text="%examinationRoom" fx:id="examinationRoom"/>
                 </columns>
             </TableView>
             <Label alignment="CENTER_RIGHT" font="$x1" text="%appointments" GridPane.columnIndex="0"
@@ -59,12 +60,10 @@
         </GridPane>
     </center>
     <right>
-        <HBox alignment="CENTER" prefHeight="203.0" prefWidth="184.0">
-            <children>
-                <ImageView fx:id="image" fitHeight="115.3125" fitWidth="153.75" pickOnBounds="true"
-                           preserveRatio="true"/>
-            </children>
-        </HBox>
+        <VBox alignment="CENTER" prefWidth="144.0">
+            <ImageView fx:id="image" fitHeight="120.0" fitWidth="120" pickOnBounds="true"
+                       preserveRatio="true"/>
+        </VBox>
     </right>
     <top>
         <HBox alignment="CENTER" prefHeight="81.0" prefWidth="588.0">

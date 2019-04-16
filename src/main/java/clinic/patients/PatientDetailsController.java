@@ -35,6 +35,8 @@ import java.util.ResourceBundle;
 public class PatientDetailsController extends MainWindowController {
 
     @FXML
+    private TableColumn<Appointment, String> examinationRoom;
+    @FXML
     private TableView<Appointment> appointmentTable;
     @FXML
     private TableColumn<Appointment, String> doctor;
@@ -104,6 +106,7 @@ public class PatientDetailsController extends MainWindowController {
                     setText(item.format(DateTimeFormatter.ofPattern("HH:mm d. MMM. YYYY")));
             }
         });
+        examinationRoom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getDoctor().getExaminationRoom().getIdentNumber()+""));
         doctor.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPatient().getSurname()));
     }
 

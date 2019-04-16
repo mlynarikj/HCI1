@@ -89,10 +89,16 @@ public class AppointmentListPage extends MainWindowController {
         }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(bundle.getString("alert.confirmation"));
         alert.setTitle(bundle.getString("delete"));
         alert.setContentText(bundle.getString("alerts.aboutToDelete.appointment1") + delete.getDoctor().getSurname() + bundle.getString("alerts.aboutToDelete.appointment2") + delete.getPatient().getSurname());
         alert.showAndWait().ifPresent(p -> {
             if (p == ButtonType.OK) {
+                Alert ale =  new Alert(Alert.AlertType.INFORMATION);
+                ale.setHeaderText(bundle.getString("alert.message"));
+                ale.setTitle(bundle.getString("delete"));
+                ale.setContentText(bundle.getString("alert.successfulDelete"));
+                ale.show();
                 appointmentList.remove(delete);
             }
         });

@@ -90,6 +90,7 @@ public class AddAppointment extends MainWindowController {
                 .add(new Appointment(LocalDateTime.of(week.getLocalDate(),LocalTime.parse(slot.getValue(),DateTimeFormatter.ofPattern("HH:mm"))), (Doctor) doctor.getValue().getPerson(), (Patient) patient.getValue().getPerson()));
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(bundle.getString("alert.message"));
         alert.setTitle(bundle.getString("alerts.appointment.created"));
         alert.setContentText(bundle.getString("alerts.appointment.created.text"));
         alert.show();

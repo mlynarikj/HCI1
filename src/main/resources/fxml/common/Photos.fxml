@@ -1,53 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="329.0" prefWidth="443.0" xmlns:fx="http://javafx.com/fxml/1"
-            xmlns="http://javafx.com/javafx/2.2" fx:controller="clinic.common.PhotosController">
+<BorderPane prefHeight="329.0" prefWidth="443.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clinic.common.PhotosController">
     <bottom>
-        <HBox alignment="CENTER_RIGHT" padding="$x1" prefHeight="78.0" prefWidth="443.0">
+        <HBox alignment="CENTER_RIGHT" prefHeight="78.0" prefWidth="443.0">
             <children>
                 <Button fx:id="save" mnemonicParsing="false" onMouseClicked="#save" text="%save">
                     <HBox.margin>
-                        <Insets right="20.0" fx:id="x1"/>
+                        <Insets right="20.0" fx:id="x1" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="cancel" mnemonicParsing="false" onMouseClicked="#cancel" text="%cancel"/>
+                <Button fx:id="cancel" mnemonicParsing="false" onMouseClicked="#cancel" text="%cancel" />
             </children>
             <BorderPane.margin>
-                <Insets fx:id="x2"/>
+                <Insets fx:id="x2" />
             </BorderPane.margin>
+         <padding>
+            <Insets right="20.0" fx:id="x3" />
+         </padding>
         </HBox>
     </bottom>
     <center>
-        <ListView fx:id="list" prefHeight="200.0" prefWidth="501.0"/>
+        <ListView fx:id="list" prefHeight="200.0" prefWidth="501.0" />
     </center>
     <right>
-        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER"
-              BorderPane.margin="$x2">
+        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
                 <fx:define>
-                    <ToggleGroup fx:id="gender"/>
+                    <ToggleGroup fx:id="gender" />
                 </fx:define>
-                <RadioButton fx:id="male" mnemonicParsing="false" toggleGroup="$gender" text="%male"
-                             textAlignment="LEFT">
+                <RadioButton fx:id="male" mnemonicParsing="false" text="%male">
+               <toggleGroup>
+                  <ToggleGroup fx:id="gender" />
+               </toggleGroup></RadioButton>
+                <RadioButton fx:id="female" mnemonicParsing="false" text="%female" toggleGroup="$gender">
                     <VBox.margin>
-                        <Insets right="16.0"/>
-                    </VBox.margin>
-                </RadioButton>
-                <RadioButton fx:id="female" toggleGroup="$gender" mnemonicParsing="false" text="%female"
-                             textAlignment="LEFT">
-                    <VBox.margin>
-                        <Insets top="20.0"/>
+                        <Insets top="20.0" />
                     </VBox.margin>
                 </RadioButton>
             </children>
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
         </VBox>
     </right>
     <top>
@@ -55,7 +59,7 @@
             <children>
                 <Label text="%addPhoto">
                     <font>
-                        <Font name="System Bold" size="20.0"/>
+                        <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
             </children>

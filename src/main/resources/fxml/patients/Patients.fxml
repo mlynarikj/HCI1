@@ -10,8 +10,8 @@
   <center>
     <TableView id="tableView" fx:id="patientTable" prefHeight="221.99990000000253" prefWidth="187.0">
       <columns>
-        <TableColumn prefWidth="100.0" text="Name" fx:id="name" />
-        <TableColumn prefWidth="87.0" text="Surname" fx:id="surname" />
+        <TableColumn text="%name" fx:id="name" />
+        <TableColumn text="%surname" fx:id="surname" />
       </columns>
     </TableView>
   </center>

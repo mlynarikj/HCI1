@@ -11,8 +11,8 @@
   <center>
     <TableView fx:id="appointmentTable" prefHeight="408.0" prefWidth="250.0">
       <columns>
-        <TableColumn prefWidth="205.0" text="Doctor" fx:id="doctor" />
-        <TableColumn prefWidth="225.0" text="Patient" fx:id="patient" />
+        <TableColumn text="%doctor" fx:id="doctor" />
+        <TableColumn text="%patient" fx:id="patient" />
       </columns>
     </TableView>
   </center>
