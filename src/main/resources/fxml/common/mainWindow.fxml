@@ -4,22 +4,15 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <BorderPane prefHeight="700" prefWidth="700" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
-            fx:controller="clinic.common.MainWindowController">
+            fx:controller="clinic.common.MainWindowController" styleClass="panel, panel-primary">
     <center>
-        <Label text="%clinic.intro">
-            <font>
-                <Font name="System Bold" size="20.0"/>
-            </font>
-        </Label>
+        <Label text="%clinic.intro" styleClass="h1"/>
     </center>
     <top>
-        <ToolBar>
-            <items>
-                <Button fx:id="patients" mnemonicParsing="false" onMouseClicked="#patients" text="%patients"/>
-                <Button id="doctor" fx:id="doctors" mnemonicParsing="false" onMouseClicked="#doctors" text="%doctors"/>
-                <Button fx:id="appointments" mnemonicParsing="false" onMouseClicked="#appointments"
-                        text="%appointments"/>
-            </items>
+        <ToolBar prefWidth="600.0" styleClass="panel-heading">
+            <Button styleClass="btn-success" mnemonicParsing="false" onMouseClicked="#patients" text="%patients"/>
+            <Button styleClass="btn-success" mnemonicParsing="false" onMouseClicked="#doctors" text="%doctors"/>
+            <Button styleClass="btn-success" mnemonicParsing="false" onMouseClicked="#appointments" text="%appointments"/>
         </ToolBar>
     </top>
 </BorderPane>

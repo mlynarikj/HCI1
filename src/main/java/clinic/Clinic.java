@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import jfxtras.styles.jmetro8.JMetro;
 
 /**
@@ -67,6 +68,7 @@ public class Clinic extends Application {
 
 //        AquaFx.style();
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
         //Application.setUserAgentStylesheet(Application.CASPIAN);
         primaryStage.setTitle(bundle.getString("mainWindow.title"));
         primaryStage.setScene(scene);

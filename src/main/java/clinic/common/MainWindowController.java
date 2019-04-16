@@ -23,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import jfxtras.styles.jmetro8.JMetro;
 
 /**
@@ -91,6 +92,8 @@ public class MainWindowController implements Initializable {
         scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
 //        new JMetro(JMetro.Style.LIGHT).applyTheme(scene);
 
+        scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
+        scene.getStylesheets().add("styles.css");
         stage.setScene(scene);
         stage.show();
         return controller;

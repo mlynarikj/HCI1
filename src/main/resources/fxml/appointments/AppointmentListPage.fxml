@@ -7,30 +7,35 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="446.9998779296875" prefWidth="653.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="clinic.appointments.AppointmentListPage">
-  <center>
-    <TableView fx:id="appointmentTable" prefHeight="408.0" prefWidth="250.0">
-      <columns>
-        <TableColumn text="%doctor" fx:id="doctor" />
-        <TableColumn text="%patient" fx:id="patient" />
-      </columns>
-    </TableView>
-  </center>
-  <right>
-    <VBox alignment="TOP_CENTER" prefHeight="408.0" prefWidth="160.0" spacing="10.0">
-      <padding>
-        <Insets top="10.0" />
-      </padding>
-      <Button fx:id="add" mnemonicParsing="false" prefWidth="350" onMouseClicked="#add" text="%appointment.add" />
-      <Button fx:id="view" mnemonicParsing="false" prefWidth="350" onMouseClicked="#view" text="%appointment.view" />
-      <Button fx:id="delete" mnemonicParsing="false" prefWidth="350" onMouseClicked="#delete" text="%appointment.delete" />
-    </VBox>
-  </right>
-  <top>
-    <ToolBar prefWidth="600.0">
-      <Button fx:id="patients" mnemonicParsing="false" onMouseClicked="#patients" text="%patients" />
-      <Button fx:id="doctors" mnemonicParsing="false" onMouseClicked="#doctors" text="%doctors" />
-      <Button fx:id="appointments" mnemonicParsing="false" onMouseClicked="#appointments" text="%appointments" />
-    </ToolBar>
-  </top>
+<BorderPane prefHeight="446.9998779296875" prefWidth="653.0" xmlns:fx="http://javafx.com/fxml/1"
+            styleClass="panel, panel-primary"
+            xmlns="http://javafx.com/javafx/2.2" fx:controller="clinic.appointments.AppointmentListPage">
+    <center>
+        <TableView fx:id="appointmentTable" prefHeight="408.0" prefWidth="250.0">
+            <columns>
+                <TableColumn text="%doctor" fx:id="doctor"/>
+                <TableColumn text="%patient" fx:id="patient"/>
+            </columns>
+        </TableView>
+    </center>
+    <right>
+        <VBox alignment="TOP_CENTER" prefHeight="408.0" prefWidth="200.0" spacing="10.0" styleClass="panel-body">
+            <padding>
+                <Insets top="10.0"/>
+            </padding>
+            <Button styleClass="btn-primary" fx:id="add" mnemonicParsing="false" prefWidth="350" onMouseClicked="#add" text="%appointment.add"/>
+            <Button styleClass="btn-info" fx:id="view" mnemonicParsing="false" prefWidth="350" onMouseClicked="#view"
+                    text="%appointment.view"/>
+            <Button styleClass="btn-danger" fx:id="delete" mnemonicParsing="false" prefWidth="350" onMouseClicked="#delete"
+                    text="%appointment.delete"/>
+        </VBox>
+    </right>
+    <top>
+        <ToolBar prefWidth="600.0" styleClass="panel-heading">
+            <Button styleClass="btn-success" mnemonicParsing="false" onMouseClicked="#patients" text="%patients"/>
+            <Button styleClass="btn-success" mnemonicParsing="false" onMouseClicked="#doctors" text="%doctors"/>
+            <Button styleClass="btn-success" mnemonicParsing="false" onMouseClicked="#appointments"
+                    text="%appointments"/>
+        </ToolBar>
+    </top>
 </BorderPane>
